@@ -55,6 +55,38 @@ export default function Footer() {
     setLegalModal(null);
   };
 
+  // Prevent background page from scrolling when legal modal is open
+  useEffect(() => {
+    if (!legalModal) return;
+
+    if (typeof window !== 'undefined' && window.__lenis) {
+      window.__lenis.stop();
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.documentElement.classList.add('lenis-stopped', 'modal-open');
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow || '';
+      document.body.style.paddingRight = originalPaddingRight || '';
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('lenis-stopped', 'modal-open');
+
+      if (typeof window !== 'undefined' && window.__lenis) {
+        window.__lenis.start();
+      }
+    };
+  }, [legalModal]);
+
   return (
     <footer style={styles.footer} className="footer-root">
       <style>{`
@@ -120,6 +152,9 @@ export default function Footer() {
                 src={logo}
                 alt="Ritam Consultancy"
                 style={styles.logoImage}
+                loading="lazy"
+                width="160"
+                height="48"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   if (e.currentTarget.nextSibling) {

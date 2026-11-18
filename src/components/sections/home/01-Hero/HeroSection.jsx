@@ -32,11 +32,18 @@ export default function HeroSection() {
         }
         @media (max-width: 992px) {
           .hero-container {
-            grid-template-columns: 1fr !important;
-            gap: 36px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 32px !important;
             align-items: center !important;
           }
+          .hero-right-col {
+            order: 1 !important; /* Visual / Image FIRST on mobile & tablet */
+            width: 100% !important;
+          }
           .hero-left-col {
+            order: 2 !important; /* Matter SECOND on mobile & tablet */
+            width: 100% !important;
             align-items: center !important;
             text-align: center !important;
             padding-bottom: 10px !important;
@@ -55,68 +62,221 @@ export default function HeroSection() {
             margin: 0 auto !important;
           }
         }
+        .hero-shapes-backdrop-desktop {
+          display: block !important;
+        }
+        .hero-shapes-backdrop-mobile {
+          display: none !important;
+        }
+        /* Mobile Version: Visual / Image FIRST, then text matter */
+        @media (max-width: 768px) {
+          .hero-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 20px !important;
+          }
+          .hero-right-col {
+            order: 1 !important; /* Image FIRST */
+            width: 100% !important;
+            padding-bottom: 0 !important;
+          }
+          .hero-left-col {
+            order: 2 !important; /* Matter SECOND */
+            width: 100% !important;
+            padding-bottom: 0 !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .hero-shapes-backdrop-desktop {
+            display: none !important;
+          }
+          .hero-shapes-backdrop-mobile {
+            display: block !important;
+          }
+        }
         @media (max-width: 640px) {
           .hero-section {
-            padding: 36px 16px 46px !important;
+            padding: 24px 18px 32px !important;
+            overflow-x: clip !important;
+          }
+          .hero-top-badge-pill {
+            padding: 5px 14px !important;
+            margin-bottom: 12px !important;
+          }
+          .hero-top-badge-pill span {
+            font-size: 12px !important;
           }
           .hero-headline {
-            font-size: clamp(26px, 7.5vw, 36px) !important;
-            line-height: 1.22 !important;
+            font-size: clamp(26px, 7vw, 32px) !important;
+            line-height: 1.2 !important;
+            letter-spacing: -0.6px !important;
+            margin: 0 0 10px 0 !important;
           }
           .hero-nowrap {
             white-space: normal !important;
           }
           .hero-subheadline {
-            font-size: 14.5px !important;
-            line-height: 1.6 !important;
-            max-width: 100% !important;
+            font-size: 14px !important;
+            line-height: 1.55 !important;
+            max-width: 360px !important;
+            margin: 0 auto 18px auto !important;
+            color: #4B5563 !important;
           }
+          /* 4. Compact 2-column, 2-row trust-point grid replacing individual cards */
           .hero-badges-grid {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 10px !important;
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px 14px !important;
             width: 100% !important;
+            max-width: 350px !important;
+            margin: 0 auto 20px auto !important;
+            padding: 0 !important;
           }
           .hero-bullet-item {
-            padding: 8px 12px !important;
+            background-color: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 7px !important;
+          }
+          .hero-bullet-check-icon {
+            width: 18px !important;
+            height: 18px !important;
+            border-radius: 50% !important;
+            background-color: #E8F5F1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+          }
+          .hero-bullet-check-icon svg {
+            width: 10px !important;
+            height: 10px !important;
           }
           .hero-bullet-text {
             font-size: 12.5px !important;
+            font-weight: 600 !important;
+            color: #374151 !important;
+            line-height: 1.3 !important;
+            white-space: nowrap !important;
+            text-align: left !important;
           }
+          /* 5. CTA Button Optimization */
           .hero-cta-group {
+            display: flex !important;
             flex-direction: column !important;
+            align-items: center !important;
             width: 100% !important;
-            max-width: 320px !important;
+            max-width: 310px !important;
             margin: 0 auto !important;
-            gap: 12px !important;
+            gap: 10px !important;
+            position: relative !important;
+            z-index: 10 !important;
           }
-          .hero-cta-group a {
+          .hero-primary-btn {
             width: 100% !important;
+            height: 48px !important;
+            padding: 0 20px !important;
+            font-size: 14.5px !important;
+            font-weight: 700 !important;
+            border-radius: 9999px !important;
+            box-shadow: 0 6px 18px rgba(4, 68, 57, 0.2) !important;
+            display: inline-flex !important;
+            align-items: center !important;
             justify-content: center !important;
-            text-align: center !important;
+            gap: 8px !important;
             box-sizing: border-box !important;
           }
+          .hero-secondary-btn {
+            width: 100% !important;
+            height: 44px !important;
+            padding: 0 18px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            border-radius: 9999px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+          }
+          /* Image & Backdrop Composition */
           .hero-visual-container {
-            max-width: 320px !important;
+            max-width: 310px !important;
+            margin: 0 auto !important;
+          }
+          .hero-students-img {
+            width: 88% !important;
+            height: 96% !important;
+            left: 6% !important;
+            bottom: 0 !important;
+          }
+          /* Floating Badges */
+          .hero-top-badge {
+            top: 4% !important;
+            right: 2% !important;
+            padding: 5px 10px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+            border: 1px solid #E5E7EB !important;
+            gap: 8px !important;
+            transform: none !important;
+          }
+          .hero-top-badge .trophy-icon-box {
+            width: 26px !important;
+            height: 26px !important;
+            font-size: 13px !important;
+            border-radius: 8px !important;
+          }
+          .hero-top-badge .badge-heading {
+            font-size: 11px !important;
+            line-height: 1.2 !important;
+          }
+          .hero-top-badge .badge-subtext {
+            font-size: 9.5px !important;
           }
           .hero-bottom-badge {
-            padding: 6px 10px !important;
             bottom: 3% !important;
-            left: -4px !important;
-            transform: scale(0.88) !important;
-            transform-origin: bottom left !important;
+            left: 2% !important;
+            padding: 5px 10px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+            border: 1px solid #E5E7EB !important;
+            gap: 8px !important;
+            transform: none !important;
           }
-          .hero-top-badge {
-            padding: 6px 10px !important;
-            top: 2% !important;
-            right: -4px !important;
-            transform: scale(0.88) !important;
-            transform-origin: top right !important;
+          .hero-bottom-badge .badge-check-circle {
+            width: 22px !important;
+            height: 22px !important;
+          }
+          .hero-bottom-badge .badge-check-circle svg {
+            width: 10px !important;
+            height: 10px !important;
+          }
+          .hero-bottom-badge .bottom-badge-choice-of {
+            font-size: 8px !important;
+          }
+          .hero-bottom-badge .bottom-badge-number {
+            font-size: 13px !important;
+            font-weight: 800 !important;
+          }
+          .hero-bottom-badge .bottom-badge-subtitle {
+            font-size: 9px !important;
           }
         }
-        @media (max-width: 380px) {
+        @media (max-width: 360px) {
           .hero-badges-grid {
-            grid-template-columns: 1fr !important;
-            gap: 8px !important;
+            gap: 8px 6px !important;
+          }
+          .hero-bullet-text {
+            font-size: 11px !important;
+          }
+          .hero-visual-container {
+            max-width: 275px !important;
           }
         }
       `}</style>
@@ -124,18 +284,18 @@ export default function HeroSection() {
         {/* Left Column: Heading, Copy, Badges, CTAs */}
         <div style={styles.leftCol} className="hero-left-col reveal-on-scroll is-visible">
           {/* Top Pill Badge */}
-          <div style={styles.topBadge}>
+          <div style={styles.topBadge} className="hero-top-badge-pill">
             <span style={styles.badgeIcon}>🎓</span>
             <span style={styles.badgeText}>{badge}</span>
           </div>
 
           {/* Main Headline strictly in two lines matching home.pdf */}
           <h1 style={styles.headline} className="nav-text-stretch hero-headline">
-            <span className="hero-nowrap" style={{ display: 'inline-block' }}>Explore B.Tech Colleges</span>
+            <span className="hero-nowrap anim-words" style={{ display: 'inline-block' }}>Explore B.Tech Colleges</span>
             <br />
             <span className="hero-nowrap" style={{ display: 'inline-block' }}>
               <span style={styles.curlWrapper}>
-                <span style={styles.highlight}>in India</span>
+                <span style={styles.highlight} className="anim-letters">in India</span>
                 {/* Dribbble Style Hand-drawn Underline Curve SVG */}
                 <svg style={styles.curlSvg} viewBox="0 0 260 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3 9C60 3 180 3 257 9" stroke="#F96815" strokeWidth="3.2" strokeLinecap="round" />
@@ -151,7 +311,7 @@ export default function HeroSection() {
           <div style={styles.badgesGrid} className="hero-badges-grid">
             {bulletBadges.map((b) => (
               <div key={b.id} style={styles.bulletItem} className="hover-lift hero-bullet-item">
-                <div style={styles.bulletCheckIcon}>
+                <div style={styles.bulletCheckIcon} className="hero-bullet-check-icon">
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
                     <path
                       d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
@@ -173,7 +333,7 @@ export default function HeroSection() {
               href={ctaButtons.primary.href}
               onClick={handlePrimaryClick}
               style={styles.primaryBtn}
-              className="hover-lift"
+              className="hover-lift hero-primary-btn"
             >
               <span>{ctaButtons.primary.label}</span>
               <span style={styles.btnArrow}>➔</span>
@@ -182,7 +342,7 @@ export default function HeroSection() {
               href="#talk-to-expert"
               onClick={handleTalkToExpertClick}
               style={styles.secondaryBtn}
-              className="hover-lift"
+              className="hover-lift hero-secondary-btn"
             >
               {ctaButtons.secondary.label}
             </a>
@@ -190,11 +350,12 @@ export default function HeroSection() {
         </div>
 
         {/* Right Column: Hero Visual with Exact Backdrop Shapes, Scaled Cutout & Badges matching Reference Image 1 */}
-        <div style={styles.rightCol} className="reveal-on-scroll is-visible delay-1">
+        <div style={styles.rightCol} className="hero-right-col reveal-on-scroll is-visible">
           <div style={styles.visualContainer} className="hero-visual-container">
-            {/* SVG Reproducing the exact layered shapes from Image 1 reference */}
+            {/* Desktop Backdrop: Original 4 layered brand shapes */}
             <svg
               style={styles.shapesBackdropSvg}
+              className="hero-shapes-backdrop-desktop"
               viewBox="0 0 580 520"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -225,12 +386,35 @@ export default function HeroSection() {
               />
             </svg>
 
+            {/* Mobile Backdrop: Refined single cohesive soft mint-green organic shape with subtle orange accent */}
+            <svg
+              style={styles.shapesBackdropSvg}
+              className="hero-shapes-backdrop-mobile"
+              viewBox="0 0 580 520"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Cohesive Soft Mint-Green Organic Shape (#E6F4F1) softly framing both students */}
+              <path
+                d="M 110 210 C 95 90, 185 30, 290 32 C 395 34, 485 95, 470 210 C 455 330, 465 470, 440 500 C 385 510, 195 510, 140 500 C 115 470, 125 330, 110 210 Z"
+                fill="#E6F4F1"
+              />
+
+              {/* Small Subtle Orange Accent Shape (#FD8340) complementing brand colors */}
+              <path
+                d="M 68 310 C 55 275, 90 250, 118 262 C 146 274, 155 310, 138 338 C 121 366, 81 345, 68 310 Z"
+                fill="#FD8340"
+                opacity="0.9"
+              />
+            </svg>
+
             {/* Top-Right Floating Trophy Card Matching Image 1 Exactly */}
             <div style={styles.floatingBadge} className="hero-top-badge hover-lift">
-              <div style={styles.trophyIconBox}>🏆</div>
-              <div style={styles.badgeTextGroup}>
-                <span style={styles.badgeHeading}>B.Tech Admissions</span>
-                <span style={styles.badgeSubtext}>Across India</span>
+              <div style={styles.trophyIconBox} className="trophy-icon-box">🏆</div>
+              <div style={styles.badgeTextGroup} className="badge-text-group">
+                <span style={styles.badgeHeading} className="badge-heading">B.Tech Admissions</span>
+                <span style={styles.badgeSubtext} className="badge-subtext">Across India</span>
               </div>
             </div>
 
@@ -241,11 +425,14 @@ export default function HeroSection() {
               style={styles.studentsImg}
               className="hero-students-img"
               loading="eager"
+              fetchPriority="high"
+              width="540"
+              height="520"
             />
 
             {/* Bottom-Left Restored White Badge Matching Image 1 Exactly */}
             <div style={styles.bottomLeftBadge} className="hero-bottom-badge hover-lift">
-              <div style={styles.badgeCheckCircle}>
+              <div style={styles.badgeCheckCircle} className="badge-check-circle">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path
                     d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
@@ -256,10 +443,10 @@ export default function HeroSection() {
                   />
                 </svg>
               </div>
-              <div style={styles.bottomBadgeTextCol}>
-                <span style={styles.bottomBadgeChoiceOf}>CHOICE OF</span>
-                <span style={styles.bottomBadgeNumber}>500+</span>
-                <span style={styles.bottomBadgeSubtitle}>Engineering Colleges</span>
+              <div style={styles.bottomBadgeTextCol} className="bottom-badge-text-col">
+                <span style={styles.bottomBadgeChoiceOf} className="bottom-badge-choice-of">CHOICE OF</span>
+                <span style={styles.bottomBadgeNumber} className="bottom-badge-number">500+</span>
+                <span style={styles.bottomBadgeSubtitle} className="bottom-badge-subtitle">Engineering Colleges</span>
               </div>
             </div>
           </div>

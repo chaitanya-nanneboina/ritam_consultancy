@@ -39,6 +39,17 @@ export default function ExploreColleges() {
             margin-top: 16px !important;
           }
         }
+        @media (max-width: 767px) {
+          .explore-section {
+            overflow-x: clip !important;
+          }
+          .explore-container {
+            overflow-x: clip !important;
+          }
+          .explore-location-card {
+            will-change: transform, opacity;
+          }
+        }
         @media (max-width: 640px) {
           .explore-section {
             padding: 50px 16px 60px !important;
@@ -105,11 +116,11 @@ export default function ExploreColleges() {
             <span style={styles.pillText}>{badge}</span>
           </div>
 
-          <h2 style={styles.heading} className="explore-heading">
+          <h2 style={styles.heading} className="explore-heading anim-words">
             <span className="explore-nowrap" style={{ display: 'inline-block' }}>Explore B.Tech Colleges</span>
             <br />
             <span className="explore-nowrap" style={{ display: 'inline-block' }}>
-              <span style={styles.highlight}>{heading.highlight}</span>
+              <span style={styles.highlight} className="anim-letters">{heading.highlight}</span>
             </span>
           </h2>
 
@@ -151,18 +162,25 @@ export default function ExploreColleges() {
         </div>
 
         {/* Right Column: Grand, High-Impact Region Cards matching Figma */}
-        <div style={styles.rightGrid} className="reveal-on-scroll is-visible delay-1">
+        <div style={styles.rightGrid} className="reveal-on-scroll is-visible anim-cards-container">
           {/* Top Wide Card: Andhra Pradesh & Telangana */}
           {wideCard && (
             <a
               href="/explore-colleges"
               onClick={handleNavigateToExplore}
               style={styles.regionCardWide}
-              className="region-card-hover hover-lift explore-region-card-wide"
+              className="region-card-hover hover-lift explore-region-card-wide anim-card explore-location-card"
               aria-label="Explore Andhra Pradesh & Telangana Engineering Colleges"
             >
               <div style={styles.wideImgWrapper} className="explore-wide-img-wrapper">
-                <img src={wideCard.image} alt={wideCard.name} style={styles.cardImg} />
+                <img
+                  src={wideCard.image}
+                  alt={wideCard.name}
+                  style={styles.cardImg}
+                  loading="lazy"
+                  width="480"
+                  height="180"
+                />
               </div>
               <div style={styles.cardInfo}>
                 <div style={styles.textGroup}>
@@ -183,11 +201,18 @@ export default function ExploreColleges() {
                 href="/explore-colleges"
                 onClick={handleNavigateToExplore}
                 style={styles.regionCard}
-                className="region-card-hover hover-lift explore-region-card"
+                className="region-card-hover hover-lift explore-region-card anim-card explore-location-card"
                 aria-label={`Explore ${region.name} Engineering Colleges`}
               >
                 <div style={styles.thumbWrapper} className="explore-thumb-wrapper">
-                  <img src={region.image} alt={region.name} style={styles.cardImg} />
+                  <img
+                    src={region.image}
+                    alt={region.name}
+                    style={styles.cardImg}
+                    loading="lazy"
+                    width="240"
+                    height="140"
+                  />
                 </div>
                 <div style={styles.cardInfo}>
                   <div style={styles.textGroup}>

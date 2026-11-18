@@ -6,6 +6,7 @@ import WhatsAppFloat from './components/common/WhatsAppFloat/WhatsAppFloat';
 import TalkToExpertModal from './components/common/TalkToExpertModal/TalkToExpertModal';
 import AppRouter from './routes/AppRouter';
 import { updateSectionMetadata } from './utils/sectionMetadata';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 /**
  * Main Application Component for Ritam Consultancy
@@ -23,6 +24,9 @@ import { updateSectionMetadata } from './utils/sectionMetadata';
  * - Global WhatsApp guidance floating CTA
  */
 export default function App() {
+  // Initialize Lenis + GSAP ScrollTrigger smooth scrolling
+  useSmoothScroll();
+
   const location = useLocation();
   const navigate = useNavigate();
   const [expertModalOpen, setExpertModalOpen] = useState(false);
@@ -103,23 +107,25 @@ export default function App() {
   };
 
   return (
-    <div className="ritam-app-wrapper">
+    <>
       {/* 1. Shared Sticky Navigation Bar */}
       <Navbar />
 
-      {/* 2. Independent Page View via AppRouter */}
-      <main id="main-content" style={{ minHeight: '80vh' }}>
-        <AppRouter />
-      </main>
+      <div className="ritam-app-wrapper">
+        {/* 2. Independent Page View via AppRouter */}
+        <main id="main-content" style={{ minHeight: '80vh' }}>
+          <AppRouter />
+        </main>
 
-      {/* 3. Floating WhatsApp Consultation CTA */}
-      <WhatsAppFloat />
+        {/* 3. Floating WhatsApp Consultation CTA */}
+        <WhatsAppFloat />
 
-      {/* 4. Global Common Footer */}
-      <Footer />
+        {/* 4. Global Common Footer */}
+        <Footer />
 
-      {/* 5. Single Global Talk to Expert Popup Instance */}
-      <TalkToExpertModal isOpen={expertModalOpen} onClose={handleCloseModal} />
-    </div>
+        {/* 5. Single Global Talk to Expert Popup Instance */}
+        <TalkToExpertModal isOpen={expertModalOpen} onClose={handleCloseModal} />
+      </div>
+    </>
   );
 }

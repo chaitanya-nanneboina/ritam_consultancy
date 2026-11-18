@@ -38,6 +38,42 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
     }
   }, [isOpen]);
 
+  // Prevent background page from scrolling when modal is open
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // 1. Stop Lenis smooth scrolling instance
+    if (typeof window !== 'undefined' && window.__lenis) {
+      window.__lenis.stop();
+    }
+
+    // 2. Lock html and body scrolling
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.documentElement.classList.add('lenis-stopped', 'modal-open');
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+
+    // Prevent desktop scrollbar layout shift
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow || '';
+      document.body.style.paddingRight = originalPaddingRight || '';
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('lenis-stopped', 'modal-open');
+
+      // 3. Resume Lenis smooth scrolling instance
+      if (typeof window !== 'undefined' && window.__lenis) {
+        window.__lenis.start();
+      }
+    };
+  }, [isOpen]);
+
   // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -215,8 +251,19 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
     <div
       style={styles.backdrop}
       className="talk-expert-modal-backdrop"
+      data-lenis-prevent="true"
       onClick={(e) => {
         if (e.target === e.currentTarget && !isSubmitting) onClose();
+      }}
+      onWheel={(e) => {
+        if (e.target === e.currentTarget) {
+          e.preventDefault();
+        }
+      }}
+      onTouchMove={(e) => {
+        if (e.target === e.currentTarget) {
+          e.preventDefault();
+        }
       }}
       role="dialog"
       aria-modal="true"
@@ -224,6 +271,7 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
     >
       <style>{`
         .talk-expert-modal-card {
+          position: relative;
           display: grid;
           grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
           max-width: 820px;
@@ -236,6 +284,43 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
           max-height: 92vh;
           animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .talk-expert-close-btn {
+          position: absolute !important;
+          top: 14px !important;
+          right: 14px !important;
+          width: 36px !important;
+          height: 36px !important;
+          border-radius: 50% !important;
+          background-color: #FFFFFF !important;
+          border: 1px solid rgba(0, 0, 0, 0.12) !important;
+          color: #1F2937 !important;
+          font-size: 16px !important;
+          font-weight: 700 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          cursor: pointer !important;
+          z-index: 99 !important;
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18) !important;
+          transition: transform 0.2s, background-color 0.2s !important;
+        }
+        .talk-expert-close-btn:hover {
+          transform: scale(1.08) !important;
+          background-color: #F3F4F6 !important;
+          color: #111827 !important;
+        }
+        .talk-expert-modal-card select {
+          height: 48px !important;
+          max-height: 48px !important;
+          box-sizing: border-box !important;
+          line-height: normal !important;
+        }
+        .talk-expert-modal-card option {
+          font-size: 15px !important;
+          padding: 8px 12px !important;
+          color: #111827 !important;
+          background-color: #FFFFFF !important;
+        }
         @media (max-width: 768px) {
           .talk-expert-modal-backdrop {
             padding: 12px !important;
@@ -245,24 +330,54 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
             grid-template-columns: 1fr !important;
             max-width: min(440px, calc(100% - 16px)) !important;
             width: 100% !important;
-            max-height: 92vh !important;
+            max-height: 90vh !important;
             overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
             border-radius: 20px !important;
           }
           .talk-expert-modal-left {
-            padding: 24px 20px 0 !important;
-            text-align: center !important;
+            padding: 22px 20px 12px !important;
+            text-align: left !important;
             min-height: auto !important;
+            margin: 0 !important;
           }
           .talk-expert-left-header {
-            align-items: center !important;
-            text-align: center !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            padding-right: 44px !important;
+            gap: 6px !important;
+            margin: 0 !important;
           }
+          .talk-expert-left-title {
+            font-size: 22px !important;
+            line-height: 1.25 !important;
+            font-weight: 800 !important;
+            margin: 0 0 6px 0 !important;
+          }
+          .talk-expert-left-title br {
+            display: none !important;
+          }
+          .talk-expert-left-subtitle {
+            font-size: 13.5px !important;
+            line-height: 1.45 !important;
+            opacity: 0.95 !important;
+            margin: 0 !important;
+          }
+          .talk-expert-counselor-img-wrap,
           .talk-expert-counselor-img {
-            max-width: 160px !important;
+            display: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 0 !important;
           }
           .talk-expert-modal-right {
-            padding: 24px 20px 24px !important;
+            padding: 14px 20px 22px !important;
+            margin: 0 !important;
+          }
+          .talk-expert-right-header {
+            display: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
           }
         }
         @media (max-width: 480px) {
@@ -272,29 +387,34 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
           .talk-expert-modal-card {
             max-width: 100% !important;
             width: 100% !important;
-            max-height: 94vh !important;
+            max-height: 92vh !important;
             border-radius: 18px !important;
           }
           .talk-expert-modal-left {
-            padding: 16px 16px 12px !important;
+            padding: 18px 16px 10px !important;
+            margin: 0 !important;
+          }
+          .talk-expert-left-header {
+            padding-right: 42px !important;
           }
           .talk-expert-left-title {
-            font-size: 18px !important;
+            font-size: 20px !important;
             line-height: 1.25 !important;
+            margin: 0 0 4px 0 !important;
           }
           .talk-expert-left-subtitle {
-            font-size: 12px !important;
+            font-size: 13px !important;
             line-height: 1.4 !important;
-          }
-          .talk-expert-counselor-img {
-            display: none !important;
+            margin: 0 !important;
           }
           .talk-expert-modal-right {
-            padding: 16px 14px 18px !important;
+            padding: 12px 16px 18px !important;
+            margin: 0 !important;
           }
           .talk-expert-modal-right input,
           .talk-expert-modal-right select {
-            font-size: 16px !important;
+            font-size: 15px !important;
+            height: 48px !important;
           }
           .talk-expert-input-wrap:focus-within {
             border-color: #F96815 !important;
@@ -306,7 +426,19 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
           box-shadow: 0 0 0 3px rgba(249, 104, 21, 0.15) !important;
         }
       `}</style>
-      <div className="talk-expert-modal-card hover-lift">
+      <div className="talk-expert-modal-card hover-lift" data-lenis-prevent="true">
+        {/* Close Button placed top-right of entire modal completely */}
+        <button
+          type="button"
+          onClick={onClose}
+          style={styles.closeBtn}
+          className="talk-expert-close-btn"
+          aria-label="Close popup"
+          disabled={isSubmitting}
+        >
+          ✕
+        </button>
+
         {/* Left Column: Forest Green with Title & Counselor Graphic matching PDF */}
         <div style={styles.leftCol} className="talk-expert-modal-left">
           <div style={styles.leftHeader} className="talk-expert-left-header">
@@ -320,14 +452,17 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
             </p>
           </div>
 
-          <div style={styles.counselorImgWrap}>
+          <div style={styles.counselorImgWrap} className="talk-expert-counselor-img-wrap">
             <img
               src={counselorImg}
               alt="Talk to Ritam Admission Expert"
               style={styles.counselorImg}
               className="talk-expert-counselor-img"
+              loading="lazy"
+              width="340"
+              height="400"
               onError={(e) => {
-                e.currentTarget.src = '/assets/images/expert/expert-counselor.png';
+                e.currentTarget.src = '/assets/images/expert/expert-counselor.webp';
               }}
             />
           </div>
@@ -335,18 +470,7 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
 
         {/* Right Column: White with 4 Form Fields matching PDF */}
         <div style={styles.rightCol} className="talk-expert-modal-right">
-          {/* Close button top right */}
-          <button
-            type="button"
-            onClick={onClose}
-            style={styles.closeBtn}
-            aria-label="Close popup"
-            disabled={isSubmitting}
-          >
-            ✕
-          </button>
-
-          <div style={styles.rightHeader}>
+          <div style={styles.rightHeader} className="talk-expert-right-header">
             <h2 id="talk-expert-heading" style={styles.rightTitle}>
               Get Expert Guidance
             </h2>
@@ -698,6 +822,9 @@ const styles = {
     backgroundColor: '#FFFFFF',
     border: '1.5px solid #D1D5DB',
     borderRadius: '12px',
+    height: '48px',
+    maxHeight: '48px',
+    boxSizing: 'border-box',
     transition: 'border-color 0.2s, box-shadow 0.2s',
   },
   fieldIcon: {
@@ -709,7 +836,8 @@ const styles = {
   },
   textInput: {
     width: '100%',
-    padding: '12px 14px 12px 42px',
+    height: '100%',
+    padding: '0 14px 0 42px',
     border: 'none',
     borderRadius: '12px',
     fontSize: '14px',
@@ -717,10 +845,13 @@ const styles = {
     backgroundColor: 'transparent',
     outline: 'none',
     fontWeight: '500',
+    boxSizing: 'border-box',
   },
   selectInput: {
     width: '100%',
-    padding: '12px 36px 12px 42px',
+    height: '100%',
+    maxHeight: '48px',
+    padding: '0 36px 0 42px',
     border: 'none',
     borderRadius: '12px',
     fontSize: '14px',
@@ -732,6 +863,7 @@ const styles = {
     WebkitAppearance: 'none',
     MozAppearance: 'none',
     cursor: 'pointer',
+    boxSizing: 'border-box',
   },
   selectDropdownArrow: {
     position: 'absolute',

@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutHeroImg from '/assets/images/about/about-3d-education.png';
+import aboutHeroImg from '/assets/images/about/about-3d-education.webp';
 
 /**
  * AboutUsSection Component
@@ -52,7 +52,7 @@ export default function AboutUsSection() {
           padding: 0 36px;
           display: grid;
           grid-template-columns: minmax(320px, 1.15fr) minmax(320px, 0.85fr);
-          gap: 48px;
+          gap: 40px;
           align-items: center;
           box-sizing: border-box;
           position: relative;
@@ -61,11 +61,12 @@ export default function AboutUsSection() {
           height: 480px;
         }
         .about-hero-text {
-          padding-top: 56px;
-          padding-bottom: 56px;
+          max-width: 540px;
+          padding: 60px 0;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          justify-content: center;
           z-index: 2;
           box-sizing: border-box;
         }
@@ -178,22 +179,28 @@ export default function AboutUsSection() {
 
         /* Responsive Breakpoints */
         @media (max-width: 992px) {
+          .about-hero-section {
+            min-height: auto !important;
+            height: auto !important;
+            padding: 0 !important;
+          }
           .about-hero-container {
             grid-template-columns: 1fr !important;
-            gap: 32px !important;
-            padding: 48px 24px !important;
+            gap: 28px !important;
+            padding: 44px 24px !important;
             height: auto !important;
             min-height: auto !important;
           }
           .about-hero-text {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
+            max-width: 100% !important;
+            padding: 0 !important;
             align-items: center !important;
             text-align: center !important;
           }
           .about-hero-img-col {
+            width: 100% !important;
             justify-content: center !important;
-            margin-top: 10px !important;
+            align-items: center !important;
             height: auto !important;
           }
           .about-story-container {
@@ -214,7 +221,7 @@ export default function AboutUsSection() {
             padding: 0 !important;
           }
           .about-hero-container {
-            padding: 36px 16px 40px !important;
+            padding: 38px 16px 42px !important;
             gap: 24px !important;
           }
           .about-hero-text {
@@ -265,8 +272,8 @@ export default function AboutUsSection() {
             </div>
 
             {/* Main Two-Line Heading: About Ritam in White & Orange, Consultancy in White */}
-            <h1 style={styles.heroHeading} className="nav-text-stretch">
-              About <span style={styles.orangeHighlight}>Ritam</span> <br />
+            <h1 style={styles.heroHeading} className="nav-text-stretch anim-words">
+              About <span style={styles.orangeHighlight} className="anim-letters">Ritam</span> <br />
               Consultancy
             </h1>
 
@@ -277,13 +284,16 @@ export default function AboutUsSection() {
           </div>
 
           {/* Right Column: 3D Education Illustration in Curved Soft Mint Frame with Orange Border */}
-          <div className="about-hero-img-col reveal-on-scroll is-visible delay-1">
+          <div className="about-hero-img-col reveal-on-scroll is-visible">
             <div className="about-curved-frame">
               <img
                 src={aboutHeroImg}
                 alt="Ritam Consultancy Education Guidance and Career Planning Illustration"
                 className="about-illustration-img"
                 loading="eager"
+                fetchPriority="high"
+                width="520"
+                height="420"
               />
             </div>
           </div>
@@ -296,8 +306,8 @@ export default function AboutUsSection() {
       <section className="about-story-section">
         <div className="about-story-container">
           <div className="about-story-header">
-            <h2 style={styles.storyHeading}>
-              Our <span style={styles.orangeHighlight}>Story</span>
+            <h2 style={styles.storyHeading} className="anim-words">
+              Our <span style={styles.orangeHighlight} className="anim-letters">Story</span>
             </h2>
           </div>
 
@@ -366,82 +376,20 @@ export default function AboutUsSection() {
           ========================================================================= */}
       <section className="about-contact-section">
         <div className="about-contact-container">
-          {/* Left Column: Google Map Mockup Card matching reference exactly */}
+          {/* Left Column: Clean Interactive Google Map without Overlays */}
           <div className="about-map-card-outer">
             <div className="about-map-inner">
-              {/* Floating Top-Left Business Information Card */}
-              <div style={styles.mapTopCard}>
-                <div style={styles.mapTopTitle}>Ritam Consultancy</div>
-                <div style={styles.mapTopRatingRow}>
-                  <span style={styles.mapTopRatingVal}>4.8</span>
-                  <span style={styles.mapTopStars} aria-label="5 stars rating">★★★★★</span>
-                  <span style={styles.mapTopReviewCount}>(120)</span>
-                </div>
-                <a
-                  href={googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={styles.viewLargerMapLink}
-                  aria-label="View larger map of Ritam Consultancy on Google Maps"
-                >
-                  View larger map
-                </a>
-              </div>
-
-              {/* Center Location Pin with 'Ritam Consultancy' Badge */}
-              <div style={styles.centerPinGroup} aria-hidden="true">
-                <div style={styles.redPinWrap}>
-                  <svg width="34" height="42" viewBox="0 0 24 32" fill="none">
-                    <path
-                      d="M12 0C5.373 0 0 5.373 0 12C0 20.5 12 31 12 31C12 31 24 20.5 24 12C24 5.373 18.627 0 12 0Z"
-                      fill="#EA4335"
-                    />
-                    <circle cx="12" cy="11.5" r="4.5" fill="#991B1B" />
-                  </svg>
-                </div>
-                <div style={styles.centerPinBadge}>
-                  <span>Ritam Consultancy</span>
-                </div>
-              </div>
-
-              {/* Bottom-Left Thumbnail Card with Google Logo */}
-              <div style={styles.bottomLeftThumbWrap} aria-hidden="true">
-                <div style={styles.thumbBox}>
-                  <img
-                    src={aboutHeroImg}
-                    alt=""
-                    style={styles.thumbImg}
-                  />
-                </div>
-                <span style={styles.googleBrandText}>Google</span>
-              </div>
-
-              {/* Bottom-Right Zoom Controls matching Google Maps interface */}
-              <div style={styles.zoomControlsWrap} aria-hidden="true">
-                <button
-                  type="button"
-                  style={styles.zoomBtn}
-                  aria-label="Zoom in"
-                  tabIndex={-1}
-                >
-                  +
-                </button>
-                <div style={styles.zoomDivider} />
-                <button
-                  type="button"
-                  style={styles.zoomBtn}
-                  aria-label="Zoom out"
-                  tabIndex={-1}
-                >
-                  −
-                </button>
-              </div>
-
-              {/* Real Interactive Google Maps Embed centered on Balkampet / SR Nagar Hyderabad */}
               <iframe
-                title="Ritam Consultancy Hyderabad Location Map"
-                src="https://maps.google.com/maps?q=17.440439,78.44825&hl=en&z=16&output=embed"
+                title="Ritam Consultancy Hyderabad Office Location"
+                src="https://maps.google.com/maps?q=137%2FB%2C+Opp.+to+Sri+Amogha+Junior+College%2C+BK+Guda%2C+Balkampet%2C+Hyderabad%2C+Telangana+500038&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 className="about-map-iframe"
+                style={{
+                  border: 0,
+                  width: '100%',
+                  height: '100%',
+                  display: 'block',
+                  borderRadius: '18px',
+                }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -450,10 +398,10 @@ export default function AboutUsSection() {
           </div>
 
           {/* Right Column: 'Get in Touch' Contact Information */}
-          <div style={styles.touchRightCol} className="reveal-on-scroll is-visible delay-1">
+          <div style={styles.touchRightCol} className="reveal-on-scroll is-visible">
             <div style={styles.touchHeader}>
-              <h2 style={styles.touchTitle}>
-                Get in <span style={styles.orangeHighlight}>Touch</span>
+              <h2 style={styles.touchTitle} className="anim-words">
+                Get in <span style={styles.orangeHighlight} className="anim-letters">Touch</span>
               </h2>
               <p style={styles.touchSubtitle}>
                 Have questions? We're here to help you with college admissions and guidance.
@@ -514,33 +462,33 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
-    border: '1px solid rgba(255, 255, 255, 0.22)',
-    padding: '6px 16px',
+    border: '1px solid rgba(255, 255, 255, 0.25)',
+    padding: '6px 14px',
     borderRadius: '9999px',
-    fontSize: '13px',
-    fontWeight: '600',
+    fontSize: '11.5px',
+    fontWeight: '700',
     color: '#FFFFFF',
-    letterSpacing: '0.4px',
-    marginBottom: '18px',
+    letterSpacing: '0.6px',
+    textTransform: 'uppercase',
+    marginBottom: '20px',
   },
   pillDot: {
-    width: '7px',
-    height: '7px',
-    borderRadius: '50%',
-    backgroundColor: '#4ADE80',
-    display: 'inline-block',
+    color: '#A3D8CD',
+    fontSize: '14px',
   },
   heroHeading: {
-    fontSize: 'clamp(34px, 4.2vw, 48px)',
+    fontSize: 'clamp(30px, 3.5vw, 42px)',
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: '1.2',
-    letterSpacing: '-1px',
+    lineHeight: '1.22',
+    letterSpacing: '-0.6px',
     margin: '0 0 16px',
+    overflowWrap: 'break-word',
+    wordBreak: 'normal',
     fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   heroDescription: {
-    fontSize: '16px',
+    fontSize: '15.5px',
     lineHeight: '1.65',
     color: '#E2ECE9',
     fontWeight: '500',
@@ -620,148 +568,6 @@ const styles = {
     color: '#044439',
     lineHeight: '1.2',
     letterSpacing: '-0.4px',
-  },
-
-  /* Google Map Card Overlays */
-  mapTopCard: {
-    position: 'absolute',
-    top: '18px',
-    left: '18px',
-    backgroundColor: '#FFFFFF',
-    borderRadius: '14px',
-    padding: '12px 16px',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.16)',
-    border: '1px solid #E5E7EB',
-    zIndex: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
-    maxWidth: '240px',
-    pointerEvents: 'auto',
-  },
-  mapTopTitle: {
-    fontSize: '16px',
-    fontWeight: '800',
-    color: '#111827',
-    lineHeight: '1.2',
-  },
-  mapTopRatingRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    fontSize: '13px',
-  },
-  mapTopRatingVal: {
-    fontWeight: '700',
-    color: '#111827',
-  },
-  mapTopStars: {
-    color: '#F59E0B',
-    fontSize: '13px',
-    letterSpacing: '1px',
-  },
-  mapTopReviewCount: {
-    color: '#6B7280',
-    fontSize: '12.5px',
-  },
-  viewLargerMapLink: {
-    color: '#2563EB',
-    fontSize: '12.5px',
-    fontWeight: '600',
-    textDecoration: 'none',
-    marginTop: '2px',
-    display: 'inline-block',
-  },
-  centerPinGroup: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -100%)',
-    zIndex: 9,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    pointerEvents: 'none',
-  },
-  redPinWrap: {
-    filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35))',
-    animation: 'pulsePin 2s infinite ease-in-out',
-  },
-  centerPinBadge: {
-    backgroundColor: '#FFFFFF',
-    padding: '4px 10px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-    border: '1px solid #E5E7EB',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#111827',
-    whiteSpace: 'nowrap',
-    marginTop: '-4px',
-  },
-  bottomLeftThumbWrap: {
-    position: 'absolute',
-    bottom: '16px',
-    left: '16px',
-    zIndex: 10,
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    pointerEvents: 'none',
-  },
-  thumbBox: {
-    width: '42px',
-    height: '42px',
-    borderRadius: '8px',
-    border: '2px solid #FFFFFF',
-    overflow: 'hidden',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-    backgroundColor: '#FFFFFF',
-  },
-  thumbImg: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-  googleBrandText: {
-    fontSize: '15px',
-    fontWeight: '800',
-    color: '#4B5563',
-    letterSpacing: '-0.3px',
-    textShadow: '0 1px 2px rgba(255,255,255,0.8)',
-  },
-  zoomControlsWrap: {
-    position: 'absolute',
-    bottom: '18px',
-    right: '18px',
-    backgroundColor: '#FFFFFF',
-    borderRadius: '10px',
-    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.18)',
-    border: '1px solid #E5E7EB',
-    zIndex: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    pointerEvents: 'auto',
-  },
-  zoomBtn: {
-    width: '34px',
-    height: '34px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: 'none',
-    border: 'none',
-    fontSize: '20px',
-    fontWeight: '600',
-    color: '#4B5563',
-    cursor: 'pointer',
-    userSelect: 'none',
-  },
-  zoomDivider: {
-    height: '1px',
-    backgroundColor: '#E5E7EB',
-    width: '100%',
   },
 
   /* Contact Right Column */

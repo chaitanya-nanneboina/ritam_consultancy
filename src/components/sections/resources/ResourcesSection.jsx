@@ -96,7 +96,9 @@ export default function ResourcesSection() {
           overflow: hidden;
           position: relative;
           box-sizing: border-box;
-          padding: 60px 0;
+          padding: 0 !important;
+          min-height: 480px;
+          height: 480px;
         }
         .resources-hero-container {
           max-width: 1240px;
@@ -108,20 +110,30 @@ export default function ResourcesSection() {
           align-items: center;
           padding: 0 36px;
           box-sizing: border-box;
-          min-height: 430px;
+          position: relative;
+          z-index: 2;
+          min-height: 480px;
+          height: 480px;
         }
         .resources-hero-text {
+          max-width: 540px;
+          padding: 60px 0;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          justify-content: center;
+          box-sizing: border-box;
           z-index: 2;
         }
         .resources-hero-illus-col {
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
           align-items: center;
           position: relative;
+          height: 100%;
+          width: 100%;
           z-index: 2;
+          box-sizing: border-box;
         }
         .resources-organic-frame {
           position: relative;
@@ -166,36 +178,47 @@ export default function ResourcesSection() {
         }
         @media (max-width: 992px) {
           .resources-hero-banner {
-            padding: 48px 0 !important;
+            min-height: auto !important;
+            height: auto !important;
+            padding: 0 !important;
           }
           .resources-hero-container {
             grid-template-columns: 1fr !important;
-            padding: 0 24px !important;
-            text-align: left !important;
-            gap: 32px !important;
+            padding: 44px 24px !important;
+            text-align: center !important;
+            gap: 28px !important;
             min-height: auto !important;
+            height: auto !important;
+          }
+          .resources-hero-text {
+            max-width: 100% !important;
+            padding: 0 !important;
+            align-items: center !important;
+            text-align: center !important;
           }
           .resources-hero-illus-col {
+            width: 100% !important;
             justify-content: center !important;
+            align-items: center !important;
+            height: auto !important;
           }
           .resources-hero-img {
             max-width: 400px !important;
-            max-height: 300px !important;
+            max-height: 280px !important;
+            margin: 0 auto !important;
           }
           .resources-content-container {
             padding: 45px 24px 70px !important;
           }
         }
         @media (max-width: 640px) {
-          .resources-hero-banner {
-            padding: 36px 0 !important;
-          }
           .resources-hero-container {
-            padding: 0 16px !important;
+            padding: 38px 16px 42px !important;
+            gap: 24px !important;
           }
           .resources-hero-img {
             max-width: 320px !important;
-            max-height: 240px !important;
+            max-height: 220px !important;
           }
           .resources-content-container {
             padding: 36px 16px 60px !important;
@@ -217,10 +240,10 @@ export default function ResourcesSection() {
               <span>Resource Hub</span>
             </div>
 
-            <h1 style={styles.heroHeading} className="nav-text-stretch">
+            <h1 style={styles.heroHeading} className="nav-text-stretch anim-words">
               Helpful Resources for <br />
               <span className="nowrap-desktop">
-                <span style={styles.orangeHighlight}>Your B.Tech Journey</span>
+                <span style={styles.orangeHighlight} className="anim-letters">Your B.Tech Journey</span>
               </span>
             </h1>
 
@@ -230,7 +253,7 @@ export default function ResourcesSection() {
             </p>
           </div>
 
-          <div className="resources-hero-illus-col reveal-on-scroll is-visible delay-1">
+          <div className="resources-hero-illus-col reveal-on-scroll is-visible">
             <div className="resources-organic-frame">
               {/* Organic curved mint backdrop with orange outline matching PDF reference */}
               <svg
@@ -252,6 +275,7 @@ export default function ResourcesSection() {
                 alt="Helpful Resources for Engineering Admissions"
                 className="resources-hero-img"
                 loading="eager"
+                fetchPriority="high"
                 width="480"
                 height="340"
               />
@@ -264,8 +288,8 @@ export default function ResourcesSection() {
       <section style={styles.contentSection}>
         <div className="resources-content-container">
           <div style={styles.sectionHeader}>
-            <h2 style={styles.sectionTitle}>
-              Download Free <span style={styles.orangeHighlight}>Resources</span>
+            <h2 style={styles.sectionTitle} className="anim-words">
+              Download Free <span style={styles.orangeHighlight} className="anim-letters">Resources</span>
             </h2>
             <p style={styles.sectionSubtitle}>
               Handpicked guides, checklists and planners to help you choose and join the right
@@ -274,9 +298,9 @@ export default function ResourcesSection() {
           </div>
 
           {/* 3. 3-Column Cards Grid matching reosucespage.pdf */}
-          <div className="resources-cards-grid">
+          <div className="resources-cards-grid anim-cards-container">
             {resourceGuides.map((guide) => (
-              <div key={guide.id} style={styles.resourceCard} className="hover-lift">
+              <div key={guide.id} style={styles.resourceCard} className="hover-lift anim-card">
                 {/* Card Top Rounded Image */}
                 <div style={styles.cardImageContainer}>
                   <img
@@ -342,31 +366,32 @@ const styles = {
     color: '#FFFFFF',
     padding: '6px 14px',
     borderRadius: '9999px',
-    fontSize: '13px',
+    fontSize: '11.5px',
     fontWeight: '700',
-    marginBottom: '18px',
-    letterSpacing: '0.4px',
+    letterSpacing: '0.6px',
+    textTransform: 'uppercase',
+    marginBottom: '20px',
   },
   pillDot: {
-    color: '#F96815',
-    fontSize: '16px',
+    color: '#A3D8CD',
+    fontSize: '14px',
     lineHeight: 1,
   },
   heroHeading: {
-    fontSize: 'clamp(32px, 3.8vw, 44px)',
+    fontSize: 'clamp(30px, 3.5vw, 42px)',
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: '1.2',
-    letterSpacing: '-0.8px',
+    lineHeight: '1.22',
+    letterSpacing: '-0.6px',
     margin: '0 0 16px 0',
   },
   orangeHighlight: {
     color: '#F96815',
   },
   heroSubtitle: {
-    fontSize: '16px',
+    fontSize: '15.5px',
     color: '#E2ECE9',
-    lineHeight: '1.6',
+    lineHeight: '1.65',
     maxWidth: '520px',
     margin: 0,
     fontFamily: "'Plus Jakarta Sans', sans-serif",

@@ -48,8 +48,17 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    if (typeof window !== 'undefined' && window.__lenis) {
+      window.__lenis.on('scroll', handleScroll);
+    }
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (typeof window !== 'undefined' && window.__lenis) {
+        window.__lenis.off('scroll', handleScroll);
+      }
+    };
   }, []);
 
   // Close mobile drawer on route change or Escape key
@@ -92,7 +101,7 @@ export default function Navbar() {
         borderBottom: scrolled ? '1px solid #E5E7EB' : '1px solid #F3F4F6',
         padding: scrolled ? '12px 24px' : '16px 24px',
       }}
-      className="ritam-sticky-navbar"
+      className={`ritam-sticky-navbar ${mobileMenuOpen ? 'menu-open' : ''}`}
     >
       <style>{`
         .ritam-sticky-navbar {
@@ -102,10 +111,15 @@ export default function Navbar() {
           right: 0 !important;
           width: 100% !important;
           z-index: 1000 !important;
-          background-color: #FFFFFF !important;
+          background-color: rgba(255, 255, 255, 0.98) !important;
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+        }
+        .ritam-sticky-navbar.menu-open .ritam-nav-enquire-btn {
+          display: none !important;
         }
         .ritam-navbar-logo {
-          height: 56px !important;
+          height: 64px !important;
           width: auto !important;
           object-fit: contain !important;
           display: block !important;
@@ -121,15 +135,15 @@ export default function Navbar() {
             justify-content: center !important;
           }
           .ritam-navbar-logo {
-            height: 44px !important;
+            height: 56px !important;
           }
         }
         @media (max-width: 640px) {
           .ritam-sticky-navbar {
-            padding: 10px 14px !important;
+            padding: 8px 16px !important;
           }
           .ritam-navbar-logo {
-            height: 34px !important;
+            height: 52px !important;
           }
           .ritam-nav-enquire-btn {
             padding: 7px 12px !important;
@@ -156,6 +170,10 @@ export default function Navbar() {
             alt="Ritam Consultancy"
             className="ritam-navbar-logo"
             style={styles.logoImage}
+            loading="eager"
+            fetchPriority="high"
+            width="210"
+            height="64"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               if (e.currentTarget.nextSibling) {
@@ -243,15 +261,6 @@ export default function Navbar() {
               );
             })}
           </div>
-
-          <button
-            type="button"
-            onClick={handleEnquireClick}
-            style={styles.mobileCtaBtn}
-          >
-            <span>Enquire Now</span>
-            <span>›</span>
-          </button>
         </div>
       )}
     </header>

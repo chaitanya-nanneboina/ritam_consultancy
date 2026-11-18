@@ -14,18 +14,18 @@ export default function AboutUs() {
             <span style={styles.pillText}>{badge}</span>
           </div>
 
-          <h2 style={styles.heading}>
+          <h2 style={styles.heading} className="anim-words">
             {heading.prefix}
-            <span style={styles.highlight}>{heading.highlight}</span>
+            <span style={styles.highlight} className="anim-letters">{heading.highlight}</span>
           </h2>
 
           <p style={styles.subtext}>{subtext}</p>
         </div>
 
         {/* 3 Contact Cards Grid */}
-        <div style={styles.grid}>
+        <div style={styles.grid} className="anim-cards-container">
           {/* Card 1: Office Address */}
-          <div style={styles.card} className="hover-lift reveal-on-scroll is-visible delay-1">
+          <div style={styles.card} className="hover-lift anim-card">
             <div style={{ ...styles.iconBox, backgroundColor: '#E8F5F1', color: '#044439' }}>📍</div>
             <div style={styles.cardContent}>
               <span style={styles.badgeLabel}>Our Office</span>
@@ -48,7 +48,7 @@ export default function AboutUs() {
           </div>
 
           {/* Card 2: Phone */}
-          <div style={styles.card} className="hover-lift reveal-on-scroll is-visible delay-2">
+          <div style={styles.card} className="hover-lift anim-card">
             <div style={{ ...styles.iconBox, backgroundColor: '#E6F8F3', color: '#044439' }}>📞</div>
             <div style={styles.cardContent}>
               <span style={styles.badgeLabel}>Call Us</span>
@@ -62,7 +62,7 @@ export default function AboutUs() {
           </div>
 
           {/* Card 3: Emails */}
-          <div style={styles.card} className="hover-lift reveal-on-scroll is-visible delay-3">
+          <div style={styles.card} className="hover-lift anim-card">
             <div style={{ ...styles.iconBox, backgroundColor: '#FEF0E6', color: '#F96815' }}>✉️</div>
             <div style={styles.cardContent}>
               <span style={styles.badgeLabel}>Email Us</span>

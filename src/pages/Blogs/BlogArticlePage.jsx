@@ -290,6 +290,10 @@ export default function BlogArticlePage() {
             src={article.image}
             alt={article.title}
             className="article-featured-img"
+            loading="eager"
+            fetchPriority="high"
+            width="820"
+            height="420"
             onError={(e) => {
               e.currentTarget.src = article.fallbackImg;
             }}
@@ -430,6 +434,9 @@ export default function BlogArticlePage() {
                     src={rel.image}
                     alt={rel.title}
                     style={styles.cardImg}
+                    loading="lazy"
+                    width="380"
+                    height="220"
                     onError={(e) => {
                       e.currentTarget.src = rel.fallbackImg;
                     }}

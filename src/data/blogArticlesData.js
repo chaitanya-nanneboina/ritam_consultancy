@@ -11,7 +11,7 @@ export const BLOG_ARTICLES = [
     date: 'Jan 20, 2026',
     readTime: '8 min read',
     image: blogImg1,
-    fallbackImg: '/assets/images/blogs/blog-1.jpg',
+    fallbackImg: '/assets/images/blogs/blog-1.webp',
     title: 'How to Choose the Right Engineering College After Intermediate: A Complete Guide',
     excerpt:
       'A step-by-step guide to selecting the right engineering college based on academics, placements, facilities and your career goals.',
@@ -50,7 +50,7 @@ export const BLOG_ARTICLES = [
     date: 'Jan 18, 2026',
     readTime: '9 min read',
     image: blogImg2,
-    fallbackImg: '/assets/images/blogs/blog-2.jpg',
+    fallbackImg: '/assets/images/blogs/blog-2.webp',
     title: 'Which B.Tech Branch Should You Choose? Courses, Career Opportunities & Future Scope',
     excerpt:
       'Explore popular B.Tech branches, their course highlights, career opportunities, and future scope to find the best fit for your interests and goals.',
@@ -89,7 +89,7 @@ export const BLOG_ARTICLES = [
     date: 'Jan 15, 2026',
     readTime: '7 min read',
     image: blogImg3,
-    fallbackImg: '/assets/images/blogs/blog-3.jpg',
+    fallbackImg: '/assets/images/blogs/blog-3.webp',
     title: '10 Things Every Student Must Check Before Joining an Engineering College',
     excerpt:
       'A practical checklist covering key factors like accreditation, placements, fees, hostel, infrastructure and more, to make a well-informed decision.',

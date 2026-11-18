@@ -63,28 +63,31 @@ export default function ZeroCommission() {
               alt="0% Commission Guarantee"
               style={styles.shieldImg}
               className="hover-scale zero-shield-img"
+              loading="lazy"
+              width="420"
+              height="420"
             />
           </div>
         </div>
 
         {/* Right Side: Copy & Trust Pills */}
-        <div style={styles.rightCol} className="zero-commission-right reveal-on-scroll is-visible delay-1">
+        <div style={styles.rightCol} className="zero-commission-right reveal-on-scroll is-visible">
           <div style={styles.pillBadge}>
             <span style={styles.pillIcon}>🌿</span>
             <span style={styles.pillText}>{badge}</span>
           </div>
 
-          <h2 style={styles.heading} className="zero-commission-heading">
+          <h2 style={styles.heading} className="zero-commission-heading anim-words">
             {heading.prefix}
-            <span style={styles.highlight}>{heading.highlight}</span>
+            <span style={styles.highlight} className="anim-letters">{heading.highlight}</span>
           </h2>
 
           <p style={styles.subtext} className="zero-commission-subtext">{subtext}</p>
 
           {/* 3 Trust Badges Row */}
-          <div style={styles.trustBadgesRow} className="zero-trust-row">
+          <div style={styles.trustBadgesRow} className="zero-trust-row anim-cards-container">
             {trustBadges.map((item) => (
-              <div key={item.id} style={styles.trustPill} className="hover-lift zero-trust-pill">
+              <div key={item.id} style={styles.trustPill} className="hover-lift zero-trust-pill anim-card">
                 <span style={styles.trustIcon}>
                   {item.icon === 'gift' && '🎁'}
                   {item.icon === 'shield-check' && '🛡️'}

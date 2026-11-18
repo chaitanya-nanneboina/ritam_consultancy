@@ -19,47 +19,50 @@ export default function BlogsSection() {
           box-sizing: border-box;
           padding: 0;
         }
+        .blogs-hero-banner {
+          min-height: 480px;
+          height: 480px;
+        }
         .blogs-hero-container {
           max-width: 1240px;
           width: 100%;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(320px, 490px) 1fr;
-          gap: 36px;
-          align-items: flex-end;
+          grid-template-columns: minmax(320px, 1.15fr) minmax(320px, 0.85fr);
+          gap: 40px;
+          align-items: center;
           padding: 0 36px;
           position: relative;
           box-sizing: border-box;
           min-height: 480px;
+          height: 480px;
         }
         .blogs-hero-text {
-          max-width: 480px;
-          padding-top: 72px;
-          padding-bottom: 64px;
+          max-width: 540px;
+          padding: 60px 0;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          justify-content: center;
           box-sizing: border-box;
           z-index: 2;
         }
         .blogs-hero-img-col {
           display: flex;
-          justify-content: flex-end;
-          align-items: flex-end;
+          justify-content: center;
+          align-items: center;
           min-width: 0;
-          line-height: 0;
           height: 100%;
           box-sizing: border-box;
         }
         .blogs-hero-img {
           width: 100%;
           height: auto;
-          max-height: 420px;
+          max-width: 480px;
+          max-height: 360px;
           object-fit: contain;
-          object-position: right bottom;
           display: block;
-          vertical-align: bottom;
-          margin: 0;
+          margin: 0 auto;
         }
         @media (min-width: 641px) {
           .nowrap-desktop {
@@ -67,24 +70,31 @@ export default function BlogsSection() {
           }
         }
         @media (max-width: 992px) {
+          .blogs-hero-banner {
+            min-height: auto !important;
+            height: auto !important;
+          }
           .blogs-hero-container {
             grid-template-columns: 1fr !important;
-            gap: 16px !important;
-            padding: 48px 36px 0 !important;
+            gap: 28px !important;
+            padding: 44px 24px !important;
             min-height: auto !important;
+            height: auto !important;
           }
           .blogs-hero-text {
             max-width: 100% !important;
-            padding: 0 0 16px 0 !important;
-            text-align: left !important;
+            padding: 0 !important;
+            align-items: center !important;
+            text-align: center !important;
           }
           .blogs-hero-img-col {
             width: 100% !important;
             justify-content: center !important;
-            align-items: flex-end !important;
+            align-items: center !important;
+            height: auto !important;
           }
           .blogs-hero-img {
-            max-width: 540px !important;
+            max-width: 420px !important;
             max-height: 280px !important;
             margin: 0 auto !important;
             object-position: center bottom !important;
@@ -99,13 +109,15 @@ export default function BlogsSection() {
         }
         @media (max-width: 640px) {
           .blogs-hero-container {
-            padding: 36px 20px 0 !important;
+            padding: 38px 16px 42px !important;
+            gap: 24px !important;
           }
           .blogs-content-container {
-            padding: 40px 20px 50px !important;
+            padding: 40px 16px 50px !important;
           }
           .blogs-hero-img {
-            max-height: 210px !important;
+            max-height: 220px !important;
+            max-width: 100% !important;
           }
           .blogs-cards-grid {
             grid-template-columns: 1fr !important;
@@ -123,10 +135,10 @@ export default function BlogsSection() {
               <span>KNOWLEDGE HUB</span>
             </div>
 
-            <h2 style={styles.heroHeading} className="nav-text-stretch">
+            <h2 style={styles.heroHeading} className="nav-text-stretch anim-words">
               Expert Guides for Your <br />
               <span className="nowrap-desktop">
-                <span style={styles.orangeHighlight}>Engineering Journey</span>
+                <span style={styles.orangeHighlight} className="anim-letters">Engineering Journey</span>
               </span>
             </h2>
 
@@ -136,14 +148,18 @@ export default function BlogsSection() {
             </p>
           </div>
 
-          <div style={styles.heroImgCol} className="blogs-hero-img-col reveal-on-scroll is-visible delay-1">
+          <div style={styles.heroImgCol} className="blogs-hero-img-col reveal-on-scroll is-visible">
             <img
               src={blogHeroImg}
               alt="Ritam Knowledge Hub - Engineering Guides"
               style={styles.heroImg}
               className="blogs-hero-img"
+              loading="eager"
+              fetchPriority="high"
+              width="540"
+              height="360"
               onError={(e) => {
-                e.currentTarget.src = '/assets/images/blogs/blogs-hero.png';
+                e.currentTarget.src = '/assets/images/blogs/blogs-hero.webp';
               }}
             />
           </div>
@@ -152,15 +168,18 @@ export default function BlogsSection() {
 
       {/* 2. Blog Cards Container matching PDF */}
       <div style={styles.contentContainer} className="blogs-content-container">
-        <div style={styles.cardsGrid} className="blogs-cards-grid">
+        <div style={styles.cardsGrid} className="blogs-cards-grid anim-cards-container">
           {articles.map((article) => (
-            <article key={article.id} style={styles.card} className="hover-lift">
+            <article key={article.id} style={styles.card} className="hover-lift anim-card">
               {/* Image with Category Pill Overlay on Top-Left matching PDF */}
               <div style={styles.cardImgWrapper}>
                 <img
                   src={article.image}
                   alt={article.title}
                   style={styles.cardImg}
+                  loading="lazy"
+                  width="380"
+                  height="220"
                   onError={(e) => {
                     e.currentTarget.src = article.fallbackImg;
                   }}
@@ -222,6 +241,7 @@ const styles = {
     boxSizing: 'border-box',
     position: 'relative',
     minHeight: '480px',
+    height: '480px',
   },
   heroContainer: {
     maxWidth: '1240px',
@@ -231,34 +251,39 @@ const styles = {
     position: 'relative',
     padding: '0 36px',
     display: 'grid',
-    gridTemplateColumns: 'minmax(320px, 560px) 1fr',
-    gap: '36px',
-    alignItems: 'flex-end',
+    gridTemplateColumns: 'minmax(320px, 1.15fr) minmax(320px, 0.85fr)',
+    gap: '40px',
+    alignItems: 'center',
     minHeight: '480px',
+    height: '480px',
+    zIndex: 2,
   },
   heroTextCol: {
-    maxWidth: '560px',
-    width: '100%',
-    paddingTop: '72px',
-    paddingBottom: '64px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingTop: '60px',
+    paddingBottom: '60px',
+    maxWidth: '540px',
+    width: '100%',
+    minWidth: 0,
     boxSizing: 'border-box',
     zIndex: 2,
   },
   pillBadge: {
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '8px',
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
     border: '1px solid rgba(255, 255, 255, 0.25)',
     padding: '6px 14px',
     borderRadius: '9999px',
-    fontSize: '11px',
-    fontWeight: '800',
+    fontSize: '11.5px',
+    fontWeight: '700',
     color: '#FFFFFF',
     letterSpacing: '0.6px',
+    textTransform: 'uppercase',
     marginBottom: '20px',
   },
   pillDot: {
@@ -266,12 +291,12 @@ const styles = {
     fontSize: '14px',
   },
   heroHeading: {
-    fontSize: 'clamp(32px, 3.8vw, 48px)',
+    fontSize: 'clamp(30px, 3.5vw, 42px)',
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: '1.2',
-    letterSpacing: '-0.8px',
-    margin: '0 0 18px',
+    lineHeight: '1.22',
+    letterSpacing: '-0.6px',
+    margin: '0 0 16px',
     overflowWrap: 'break-word',
     wordBreak: 'normal',
     fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -280,32 +305,31 @@ const styles = {
     color: '#F96815',
   },
   heroSubtitle: {
-    fontSize: '15px',
+    fontSize: '15.5px',
     fontWeight: '500',
     fontFamily: "'Plus Jakarta Sans', sans-serif",
     color: '#E2ECE9',
     lineHeight: '1.65',
-    maxWidth: '480px',
+    maxWidth: '520px',
     margin: 0,
   },
   heroImgCol: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
     minWidth: 0,
-    lineHeight: 0,
     height: '100%',
+    width: '100%',
     boxSizing: 'border-box',
+    zIndex: 2,
   },
   heroImg: {
     width: '100%',
-    height: 'auto',
-    maxHeight: '420px',
+    maxWidth: '480px',
+    maxHeight: '360px',
     objectFit: 'contain',
-    objectPosition: 'right bottom',
     display: 'block',
-    verticalAlign: 'bottom',
-    margin: 0,
+    margin: '0 auto',
   },
   contentContainer: {
     maxWidth: '1240px',

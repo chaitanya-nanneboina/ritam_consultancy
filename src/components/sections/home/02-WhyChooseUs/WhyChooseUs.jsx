@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HOME_PAGE_DATA } from '../../../../data/homeData';
 
 export default function WhyChooseUs() {
@@ -139,11 +140,13 @@ export default function WhyChooseUs() {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
+    ScrollTrigger.addEventListener('refresh', updateMobileCardStacking);
     updateMobileCardStacking();
 
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      ScrollTrigger.removeEventListener('refresh', updateMobileCardStacking);
     };
   }, []);
 

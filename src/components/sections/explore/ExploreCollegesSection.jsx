@@ -63,51 +63,59 @@ export default function ExploreCollegesSection() {
           position: relative;
           box-sizing: border-box;
           padding: 0;
+          min-height: 480px;
+          height: 480px;
         }
         .explore-hero-container {
-          max-width: 1360px;
-          width: 100%;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 460px 1fr;
-          gap: 20px;
-          align-items: flex-end;
-          padding: 0 36px;
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          height: 480px !important;
+          min-height: 480px !important;
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: flex-end !important;
+          padding: 0 0 0 max(36px, calc((100vw - 1240px) / 2 + 36px)) !important;
+          box-sizing: border-box !important;
           position: relative;
-          box-sizing: border-box;
-          min-height: 480px;
+          overflow: hidden;
         }
         .explore-hero-text {
-          max-width: 460px;
-          padding-top: 72px;
-          padding-bottom: 64px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          box-sizing: border-box;
-          z-index: 2;
+          max-width: 520px !important;
+          padding: 60px 0 !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          align-items: flex-start !important;
+          align-self: center !important;
+          z-index: 5 !important;
+          position: relative !important;
+          flex-shrink: 0 !important;
+          box-sizing: border-box !important;
         }
         .explore-hero-img-col {
-          display: flex;
-          justify-content: flex-start !important;
+          display: flex !important;
+          justify-content: flex-end !important;
           align-items: flex-end !important;
-          min-width: 0;
-          line-height: 0;
-          height: 100%;
-          box-sizing: border-box;
-          overflow: visible;
+          height: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          line-height: 0 !important;
+          position: relative !important;
+          overflow: visible !important;
+          flex: 1 1 auto !important;
+          z-index: 2 !important;
         }
         .explore-hero-img {
           width: auto !important;
-          max-width: 950px !important;
-          height: 420px !important;
+          max-width: min(850px, 58vw) !important;
+          height: 435px !important;
+          max-height: 440px !important;
           object-fit: contain !important;
-          object-position: left bottom !important;
-          display: block;
-          vertical-align: bottom;
-          margin: 0;
-          position: relative !important;
-          bottom: 0 !important;
+          object-position: right bottom !important;
+          display: block !important;
+          vertical-align: bottom !important;
+          margin: 0 0 0 auto !important;
         }
         @media (min-width: 641px) {
           .nowrap-desktop {
@@ -115,33 +123,47 @@ export default function ExploreCollegesSection() {
           }
         }
         @media (max-width: 992px) {
-          .explore-hero-container {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-            padding: 48px 24px 0 !important;
+          .explore-hero-banner {
             min-height: auto !important;
+            height: auto !important;
+          }
+          .explore-hero-container {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: stretch !important;
+            padding: 44px 0 0 0 !important;
+            min-height: auto !important;
+            height: auto !important;
+            gap: 0 !important;
           }
           .explore-hero-text {
-            max-width: 100% !important;
-            padding: 0 0 16px 0 !important;
-            text-align: left !important;
+            max-width: 640px !important;
+            padding: 0 24px 20px 24px !important;
+            align-items: center !important;
+            text-align: center !important;
+            margin: 0 auto !important;
           }
           .explore-hero-img-col {
             width: 100% !important;
-            justify-content: center !important;
+            display: flex !important;
+            justify-content: flex-end !important;
             align-items: flex-end !important;
-            position: relative !important;
-            margin-top: 8px !important;
+            height: auto !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 0 !important;
           }
           .explore-hero-img {
-            position: relative !important;
-            right: auto !important;
-            bottom: auto !important;
-            width: 100% !important;
-            max-width: 600px !important;
-            max-height: 340px !important;
-            margin: 0 auto !important;
-            object-position: center bottom !important;
+            width: 90% !important;
+            max-width: 680px !important;
+            height: auto !important;
+            max-height: 380px !important;
+            object-fit: contain !important;
+            object-position: right bottom !important;
+            display: block !important;
+            vertical-align: bottom !important;
+            margin: 0 0 0 auto !important;
           }
           .explore-cards-grid {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -164,24 +186,44 @@ export default function ExploreCollegesSection() {
         }
         @media (max-width: 640px) {
           .explore-hero-container {
-            padding: 36px 16px 0 !important;
+            padding: 38px 0 0 0 !important;
+            gap: 0 !important;
           }
           .explore-hero-text {
-            padding: 0 0 14px 0 !important;
-          }
-          .explore-hero-img-col {
-            overflow: hidden !important;
+            padding: 0 16px 16px 16px !important;
           }
           .explore-content-container {
             padding: 40px 16px 50px !important;
           }
+          .explore-hero-img-col {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: flex-end !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 0 !important;
+          }
           .explore-hero-img {
-            max-height: 230px !important;
-            max-width: 100% !important;
+            width: 98% !important;
+            max-width: 520px !important;
+            height: auto !important;
+            max-height: 280px !important;
+            object-fit: contain !important;
+            object-position: right bottom !important;
+            display: block !important;
+            vertical-align: bottom !important;
+            margin: 0 0 0 auto !important;
           }
           .explore-cards-grid {
             grid-template-columns: 1fr !important;
             gap: 16px !important;
+          }
+          .state-destination-card {
+            overflow: hidden !important;
+          }
+          .state-card-img {
+            will-change: clip-path !important;
           }
         }
       `}</style>
@@ -195,10 +237,10 @@ export default function ExploreCollegesSection() {
               <span>Explore Colleges</span>
             </div>
 
-            <h2 style={styles.heroHeading} className="nav-text-stretch">
+            <h2 style={styles.heroHeading} className="nav-text-stretch anim-words">
               Explore Engineering <br />
               <span className="nowrap-desktop">
-                Colleges <span style={styles.orangeHighlight}>Across India</span>
+                Colleges <span style={styles.orangeHighlight} className="anim-letters">Across India</span>
               </span>
             </h2>
 
@@ -208,14 +250,18 @@ export default function ExploreCollegesSection() {
             </p>
           </div>
 
-          <div style={styles.heroImgCol} className="explore-hero-img-col reveal-on-scroll is-visible delay-1">
+          <div style={styles.heroImgCol} className="explore-hero-img-col reveal-on-scroll is-visible">
             <img
               src={exploreHeroImg}
               alt="Explore Engineering Colleges Across India"
               style={styles.heroImg}
               className="explore-hero-img"
+              loading="eager"
+              fetchPriority="high"
+              width="540"
+              height="360"
               onError={(e) => {
-                e.currentTarget.src = '/assets/images/explorer/explore-hero.png';
+                e.currentTarget.src = '/assets/images/explorer/explore-hero.webp';
               }}
             />
           </div>
@@ -225,8 +271,8 @@ export default function ExploreCollegesSection() {
       {/* 2. Explore by State Section */}
       <div style={styles.contentContainer} className="explore-content-container">
         <div style={styles.statesHeader}>
-          <h3 style={styles.statesTitle}>
-            Explore by <span style={styles.orangeHighlight}>State</span>
+          <h3 style={styles.statesTitle} className="anim-words">
+            Explore by <span style={styles.orangeHighlight} className="anim-letters">State</span>
           </h3>
           <p style={styles.statesSubtitle}>
             Discover engineering opportunities, admission processes, and key insights across major states in India.
@@ -234,7 +280,7 @@ export default function ExploreCollegesSection() {
         </div>
 
         {/* 3. Exactly Four State Cards with Dynamic WhatsApp Routing */}
-        <div style={styles.cardsGrid} className="explore-cards-grid">
+        <div style={styles.cardsGrid} className="explore-cards-grid anim-cards-container">
           {cards.map((card) => {
             const waUrl = getCardWhatsAppUrl(card);
             return (
@@ -244,13 +290,17 @@ export default function ExploreCollegesSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={styles.portraitCard}
-                className="hover-lift"
+                className="hover-lift anim-card state-destination-card"
                 aria-label={`Chat on WhatsApp about ${card.state} colleges - ${card.cities}`}
               >
                 <img
                   src={encodeURI(card.image)}
                   alt={`${card.state} Engineering Colleges`}
                   style={styles.portraitCardImg}
+                  className="state-card-img"
+                  loading="lazy"
+                  width="280"
+                  height="380"
                   onError={(e) => {
                     if (!e.currentTarget.dataset.retried) {
                       e.currentTarget.dataset.retried = 'true';
@@ -262,12 +312,13 @@ export default function ExploreCollegesSection() {
 
                 <div style={styles.cardBottomContent}>
                   <div style={styles.cardTextGroup}>
-                    <h4 style={styles.cardStateTitle}>{card.state}</h4>
-                    <p style={styles.cardCitiesSubtitle}>{card.cities}</p>
+                    <h4 style={styles.cardStateTitle} className="state-card-title">{card.state}</h4>
+                    <p style={styles.cardCitiesSubtitle} className="state-card-cities">{card.cities}</p>
                   </div>
 
                   <div
                     style={styles.whiteArrowCircle}
+                    className="state-card-arrow"
                     aria-label={`Connect on WhatsApp for ${card.state} guidance`}
                   >
                     →
@@ -341,45 +392,51 @@ const styles = {
     boxSizing: 'border-box',
     position: 'relative',
     minHeight: '480px',
+    height: '480px',
   },
   heroContainer: {
-    maxWidth: '1360px',
     width: '100%',
-    margin: '0 auto',
+    maxWidth: '100%',
+    margin: 0,
     boxSizing: 'border-box',
     position: 'relative',
-    padding: '0 36px',
-    display: 'grid',
-    gridTemplateColumns: '460px 1fr',
-    gap: '20px',
+    padding: '0 0 0 max(36px, calc((100vw - 1240px) / 2 + 36px))',
+    display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'flex-end',
     minHeight: '480px',
+    height: '480px',
+    zIndex: 2,
+    overflow: 'hidden',
   },
   heroTextCol: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    paddingTop: '72px',
-    paddingBottom: '64px',
-    maxWidth: '460px',
+    paddingTop: '60px',
+    paddingBottom: '60px',
+    maxWidth: '520px',
     width: '100%',
     minWidth: 0,
     boxSizing: 'border-box',
-    zIndex: 2,
+    zIndex: 5,
+    alignSelf: 'center',
+    flexShrink: 0,
   },
   pillBadge: {
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '8px',
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
     border: '1px solid rgba(255, 255, 255, 0.25)',
     padding: '6px 14px',
     borderRadius: '9999px',
-    fontSize: '11px',
-    fontWeight: '800',
+    fontSize: '11.5px',
+    fontWeight: '700',
     color: '#FFFFFF',
     letterSpacing: '0.6px',
+    textTransform: 'uppercase',
     marginBottom: '20px',
   },
   pillDot: {
@@ -387,12 +444,12 @@ const styles = {
     fontSize: '14px',
   },
   heroHeading: {
-    fontSize: 'clamp(28px, 3.2vw, 42px)',
+    fontSize: 'clamp(30px, 3.5vw, 42px)',
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: '1.25',
-    letterSpacing: '-0.5px',
-    margin: '0 0 18px',
+    lineHeight: '1.22',
+    letterSpacing: '-0.6px',
+    margin: '0 0 16px',
     overflowWrap: 'break-word',
     wordBreak: 'normal',
     fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -401,32 +458,37 @@ const styles = {
     color: '#F96815',
   },
   heroSubtitle: {
-    fontSize: '15px',
+    fontSize: '15.5px',
     fontWeight: '500',
     fontFamily: "'Plus Jakarta Sans', sans-serif",
     color: '#E2ECE9',
     lineHeight: '1.65',
-    maxWidth: '480px',
+    maxWidth: '520px',
     margin: 0,
   },
   heroImgCol: {
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     alignItems: 'flex-end',
     minWidth: 0,
-    lineHeight: 0,
     height: '100%',
+    width: '100%',
     boxSizing: 'border-box',
+    zIndex: 2,
+    margin: 0,
+    padding: 0,
+    lineHeight: 0,
   },
   heroImg: {
     width: 'auto',
-    maxWidth: '950px',
-    height: '420px',
+    maxWidth: 'min(850px, 58vw)',
+    height: '435px',
+    maxHeight: '440px',
     objectFit: 'contain',
-    objectPosition: 'left bottom',
+    objectPosition: 'right bottom',
     display: 'block',
     verticalAlign: 'bottom',
-    margin: 0,
+    margin: '0 0 0 auto',
   },
   contentContainer: {
     maxWidth: '1240px',
@@ -463,6 +525,7 @@ const styles = {
   portraitCard: {
     position: 'relative',
     height: '350px',
+    backgroundColor: '#023A2A',
     borderRadius: '20px',
     overflow: 'hidden',
     display: 'flex',

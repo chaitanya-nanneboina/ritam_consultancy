@@ -47,13 +47,13 @@ export default function HomeEnquiry() {
         </div>
 
         {/* Right Column: Expert Guidance Value Prop */}
-        <div style={styles.contentCol} className="home-enquiry-content-col reveal-on-scroll is-visible delay-1">
+        <div style={styles.contentCol} className="home-enquiry-content-col reveal-on-scroll is-visible">
           <div style={styles.pillBadge}>
             <span style={styles.pillIcon}>🎓</span>
             <span style={styles.pillText}>{rightContent.badge}</span>
           </div>
 
-          <h2 style={styles.heading} className="home-enquiry-heading">{rightContent.heading}</h2>
+          <h2 style={styles.heading} className="home-enquiry-heading anim-words">{rightContent.heading}</h2>
 
           <p style={styles.subtext} className="home-enquiry-subtext">{rightContent.subtext}</p>
         </div>

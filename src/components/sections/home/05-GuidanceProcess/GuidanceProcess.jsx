@@ -98,17 +98,24 @@ export default function GuidanceProcess() {
             <span style={styles.pillText}>{badge}</span>
           </div>
 
-          <h2 style={styles.heading} className="guidance-heading">
+          <h2 style={styles.heading} className="guidance-heading anim-words">
             Because Your
             <br />
-            <span style={styles.highlight}>Future Matters</span> to Us
+            <span style={styles.highlight} className="anim-letters">Future Matters</span> to Us
           </h2>
 
           <p style={styles.subtext} className="guidance-subtext">{subtext}</p>
 
           {/* Photo Card with Floating Tags */}
           <div style={styles.photoCard} className="guidance-photo-card">
-            <img src={image.src} alt={image.alt} style={styles.counselingImg} />
+            <img
+              src={image.src}
+              alt={image.alt}
+              style={styles.counselingImg}
+              loading="lazy"
+              width="480"
+              height="320"
+            />
             {/* Overlaid Badges */}
             <div style={styles.photoTagsGroup} className="guidance-photo-tags">
               <div style={styles.photoTag} className="guidance-photo-tag">
@@ -124,13 +131,13 @@ export default function GuidanceProcess() {
         </div>
 
         {/* Right Column: 4-Step Process Timeline with Connected Track */}
-        <div style={styles.rightCol} className="reveal-on-scroll is-visible delay-1">
-          <div style={styles.timelineList}>
+        <div style={styles.rightCol} className="reveal-on-scroll is-visible">
+          <div style={styles.timelineList} className="guidance-timeline-list">
             {/* Continuous vertical timeline connector line */}
             <div style={styles.timelineTrackLine} className="guidance-track-line" aria-hidden="true" />
 
             {steps.map((st) => (
-              <div key={st.number} style={styles.timelineRow} className="timeline-row guidance-timeline-row">
+              <div key={st.number} style={styles.timelineRow} className="timeline-row guidance-timeline-row guidance-step-item">
                 {/* Step Number Circle */}
                 <div style={styles.stepNumCircle} className="guidance-step-circle">
                   <span>{st.number}</span>
