@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ritam Consultancy — Official Web Platform
 
 Modern, responsive, high-performance web platform for **Ritam Consultancy**, India's trusted educational consultancy specializing in B.Tech engineering admissions across India.
@@ -196,3 +197,6 @@ Before this architectural overhaul, running `npm run dev` failed to load the Rea
 ## 📄 License
 © 2026 Ritam Consultancy. All rights reserved.
 
+=======
+# ritam-consultancy-main
+>>>>>>> 1583fb95a0741767a949b7f765909bb8f6ca50bc
