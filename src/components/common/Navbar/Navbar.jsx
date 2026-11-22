@@ -36,7 +36,8 @@ export default function Navbar() {
     if (current === '/blogs' || current.startsWith('/blogs/')) return 'blogs';
     if (current === '/resources') return 'resources';
     if (current === '/about-us') return 'about';
-    return 'home';
+    if (current === '/' || current === '') return 'home';
+    return '';
   };
 
   const activeId = getActiveId();

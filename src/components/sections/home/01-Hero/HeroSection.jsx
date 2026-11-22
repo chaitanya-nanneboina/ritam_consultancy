@@ -62,11 +62,10 @@ export default function HeroSection() {
             margin: 0 auto !important;
           }
         }
-        .hero-shapes-backdrop-desktop {
+        .hero-shapes-backdrop {
           display: block !important;
-        }
-        .hero-shapes-backdrop-mobile {
-          display: none !important;
+          width: 100% !important;
+          height: 100% !important;
         }
         /* Mobile Version: Visual / Image FIRST, then text matter */
         @media (max-width: 768px) {
@@ -86,12 +85,6 @@ export default function HeroSection() {
             padding-bottom: 0 !important;
             align-items: center !important;
             text-align: center !important;
-          }
-          .hero-shapes-backdrop-desktop {
-            display: none !important;
-          }
-          .hero-shapes-backdrop-mobile {
-            display: block !important;
           }
         }
         @media (max-width: 640px) {
@@ -352,60 +345,45 @@ export default function HeroSection() {
         {/* Right Column: Hero Visual with Exact Backdrop Shapes, Scaled Cutout & Badges matching Reference Image 1 */}
         <div style={styles.rightCol} className="hero-right-col reveal-on-scroll is-visible">
           <div style={styles.visualContainer} className="hero-visual-container">
-            {/* Desktop Backdrop: Original 4 layered brand shapes */}
+            {/* Unified Cohesive Abstract Backdrop - Premium Layered Curves */}
             <svg
               style={styles.shapesBackdropSvg}
-              className="hero-shapes-backdrop-desktop"
+              className="hero-shapes-backdrop"
               viewBox="0 0 580 520"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              {/* 1. Dark Forest Green Arch behind Boy's head & Center (#135B4E) */}
+              {/* Layer 1: Very Light Peach Warmth (#FEF3EB) - Soft glow on the right framing the composition */}
               <path
-                d="M 65 140 C 60 50, 135 15, 210 20 C 285 25, 335 60, 345 115 C 355 175, 330 255, 280 285 C 225 315, 145 285, 105 235 C 75 195, 70 165, 65 140 Z"
-                fill="#135B4E"
+                d="M 270 500 C 265 330, 310 160, 370 95 C 425 35, 500 50, 530 120 C 560 190, 550 350, 515 500 Z"
+                fill="#FEF3EB"
               />
 
-              {/* 2. Vibrant Orange Curved Shape protruding prominently to the left (#FD8340) */}
+              {/* Layer 2: Soft Sage Green Primary Canvas (#E2F1ED) - Cohesive backdrop unifying both students */}
               <path
-                d="M 10 220 C -2 175, 30 145, 80 148 C 130 150, 240 210, 285 205 C 315 200, 325 235, 305 270 C 275 325, 195 375, 135 365 C 80 355, 35 315, 18 265 L 10 220 Z"
-                fill="#FD8340"
+                d="M 95 490 C 75 350, 85 200, 130 115 C 170 38, 260 22, 340 35 C 420 48, 485 92, 505 180 C 525 275, 515 390, 490 490 Z"
+                fill="#E2F1ED"
               />
 
-              {/* 3. Muted Sage Green Shape on the Right (#CBD5C9) */}
+              {/* Layer 3: Soft Sage Nested Contour (#C6E7DE) - Subtle organic depth behind right shoulder */}
               <path
-                d="M 330 90 C 410 50, 510 65, 535 125 C 555 175, 545 250, 485 275 C 420 290, 345 245, 325 180 C 315 140, 310 105, 330 90 Z"
-                fill="#CBD5C9"
+                d="M 315 130 C 355 80, 425 82, 460 125 C 490 165, 490 235, 455 275 C 418 312, 350 305, 320 260 C 295 218, 290 160, 315 130 Z"
+                fill="#C6E7DE"
+                opacity="0.75"
               />
 
-              {/* 4. Soft Warm Sand/Peach Shape on Far Right (#FEECE2) */}
+              {/* Layer 4: Deep Forest Green Brand Arch (#044439) - Smooth, sophisticated contrast behind boy & center */}
               <path
-                d="M 450 115 C 520 95, 570 140, 578 200 C 585 265, 550 335, 495 348 C 450 358, 420 310, 428 245 C 435 185, 415 135, 450 115 Z"
-                fill="#FEECE2"
-              />
-            </svg>
-
-            {/* Mobile Backdrop: Refined single cohesive soft mint-green organic shape with subtle orange accent */}
-            <svg
-              style={styles.shapesBackdropSvg}
-              className="hero-shapes-backdrop-mobile"
-              viewBox="0 0 580 520"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Cohesive Soft Mint-Green Organic Shape (#E6F4F1) softly framing both students */}
-              <path
-                d="M 110 210 C 95 90, 185 30, 290 32 C 395 34, 485 95, 470 210 C 455 330, 465 470, 440 500 C 385 510, 195 510, 140 500 C 115 470, 125 330, 110 210 Z"
-                fill="#E6F4F1"
+                d="M 115 440 C 95 320, 110 180, 160 100 C 195 45, 265 42, 305 92 C 340 135, 350 220, 340 330 C 330 420, 290 470, 220 470 C 160 470, 125 460, 115 440 Z"
+                fill="#044439"
               />
 
-              {/* Small Subtle Orange Accent Shape (#FD8340) complementing brand colors */}
+              {/* Layer 5: Warm Muted Orange Accent (#F96815) - Balanced, elegant energy on lower-left */}
               <path
-                d="M 68 310 C 55 275, 90 250, 118 262 C 146 274, 155 310, 138 338 C 121 366, 81 345, 68 310 Z"
-                fill="#FD8340"
-                opacity="0.9"
+                d="M 60 260 C 42 292, 42 342, 68 375 C 95 408, 142 402, 168 370 C 192 338, 186 284, 156 248 C 124 216, 76 226, 60 260 Z"
+                fill="#F96815"
+                opacity="0.92"
               />
             </svg>
 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Explore Engineering Colleges Across India -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/explore-colleges</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blogs Hub -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/blogs</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 2027 SEO Blog 1: How to Choose Engineering College After Intermediate -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/blogs/how-to-choose-engineering-college-after-intermediate</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 2027 SEO Blog 2: Which B.Tech Branch Should You Choose in 2027 -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/blogs/which-btech-branch-to-choose</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 2027 SEO Blog 3: 10 Things to Check Before Joining an Engineering College -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/blogs/things-to-check-before-joining-engineering-college</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Free Downloadable Resources -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/resources</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Us -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/about-us</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Legal: Privacy Policy -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/privacy-policy</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Legal: Terms & Conditions -->
+  <url>
+    <loc>https://www.ritamconsultancy.com/terms-and-conditions</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

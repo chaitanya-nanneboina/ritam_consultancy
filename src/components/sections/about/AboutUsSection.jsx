@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutHeroImg from '/assets/images/about/about-3d-education.webp';
+import aboutHeroImg from '/assets/images/about/about-resources-hero.webp';
 
 /**
  * AboutUsSection Component
@@ -26,7 +26,7 @@ import aboutHeroImg from '/assets/images/about/about-3d-education.webp';
  *            Ritam Consultancy overlay card (4.8 stars, 120 reviews, View larger map link),
  *            center red location pin + label badge, bottom thumbnail + Google logo, and zoom controls.
  *    - Right: "Get in Touch" ("Get in" in #044439, "Touch" in #F96815), description,
- *            Call Us (+91 98765 43210), and Email Us (admissions@ritamconsultancy.com & ritamconsultancy77@gmail.com).
+ *            Call Us (+91 76719 80580), and Email Us (admissions@ritamconsultancy.com & ritamconsultancy77@gmail.com).
  */
 export default function AboutUsSection() {
   const googleMapsUrl = 'https://maps.app.goo.gl/z2KDhjNfTMerpFaj9';
@@ -418,8 +418,8 @@ export default function AboutUsSection() {
                 </div>
                 <div style={styles.contactDetails}>
                   <span style={styles.contactLabel}>Call Us</span>
-                  <a href="tel:+919876543210" style={styles.contactValueBig}>
-                    +91 98765 43210
+                  <a href="tel:+917671980580" style={styles.contactValueBig}>
+                    +91 76719 80580
                   </a>
                 </div>
               </div>

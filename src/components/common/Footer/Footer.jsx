@@ -90,6 +90,24 @@ export default function Footer() {
   return (
     <footer style={styles.footer} className="footer-root">
       <style>{`
+        .footer-location-item {
+          display: inline-flex !important;
+          align-items: flex-start !important;
+          gap: 8px !important;
+          max-width: 420px !important;
+          line-height: 1.45 !important;
+        }
+        @media (max-width: 1100px) {
+          .footer-top-bar {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 20px !important;
+          }
+          .footer-location-item {
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+        }
         @media (max-width: 768px) {
           .footer-root {
             padding: 36px 16px 24px !important;
@@ -115,7 +133,11 @@ export default function Footer() {
           .footer-contact-group {
             flex-direction: column !important;
             align-items: flex-start !important;
-            gap: 12px !important;
+            gap: 14px !important;
+            width: 100% !important;
+          }
+          .footer-location-item {
+            max-width: 100% !important;
             width: 100% !important;
           }
           .footer-bottom-bar {
@@ -172,11 +194,11 @@ export default function Footer() {
 
           {/* Contact Details with Outline Icons matching PDFs */}
           <div style={styles.contactGroup} className="footer-contact-group">
-            <a href="tel:+919876543210" style={styles.contactItem} aria-label="Call Ritam Consultancy">
+            <a href="tel:+917671980580" style={styles.contactItem} aria-label="Call Ritam Consultancy">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              <span>+91 98765 43210</span>
+              <span>+91 76719 80580</span>
             </a>
 
             <a href="mailto:admissions@ritamconsultancy.com" style={styles.contactItem} aria-label="Email Ritam Consultancy">
@@ -187,13 +209,12 @@ export default function Footer() {
               <span>admissions@ritamconsultancy.com</span>
             </a>
 
-            <div style={styles.contactItem}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                <path d="M2 12h20" />
+            <div style={styles.contactItem} className="footer-location-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
               </svg>
-              <span>Hyderabad, India</span>
+              <span style={{ lineHeight: 1.45 }}>Opp. to Sri Amogha Junior College, BK Guda, Balkampet, Hyderabad</span>
             </div>
 
             {/* Social Media Clickable Links */}
@@ -248,32 +269,32 @@ export default function Footer() {
           <p style={styles.copyrightText}>{copyright}</p>
 
           <div style={styles.legalLinksGroup} className="footer-legal-links">
-            <button
-              type="button"
-              onClick={handleOpenPrivacy}
-              style={styles.legalBtn}
+            <Link
+              to="/privacy-policy"
+              style={styles.legalLink}
               aria-label="Read Privacy Policy"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               Privacy Policy
-            </button>
+            </Link>
             <span style={styles.pipe} aria-hidden="true">|</span>
-            <button
-              type="button"
-              onClick={handleOpenTerms}
-              style={styles.legalBtn}
+            <Link
+              to="/terms-and-conditions"
+              style={styles.legalLink}
               aria-label="Read Terms & Conditions"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               Terms &amp; Conditions
-            </button>
+            </Link>
             <span style={styles.pipe} aria-hidden="true">|</span>
-            <a
-              href="#about-us"
-              onClick={(e) => scrollToTarget('about-us', e)}
+            <Link
+              to="/about-us"
               style={styles.legalLink}
-              aria-label="Scroll to Contact Us section"
+              aria-label="Visit About Us page"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -331,7 +352,7 @@ export default function Footer() {
                   </p>
                   <h4>5. Contact Us Regarding Privacy</h4>
                   <p>
-                    For inquiries regarding your personal information, contact us at <a href="mailto:admissions@ritamconsultancy.com" style={{ color: '#044439', fontWeight: 700 }}>admissions@ritamconsultancy.com</a> or call <a href="tel:+919876543210" style={{ color: '#044439', fontWeight: 700 }}>+91 98765 43210</a>.
+                    For inquiries regarding your personal information, contact us at <a href="mailto:admissions@ritamconsultancy.com" style={{ color: '#044439', fontWeight: 700 }}>admissions@ritamconsultancy.com</a> or call <a href="tel:+917671980580" style={{ color: '#044439', fontWeight: 700 }}>+91 76719 80580</a>.
                   </p>
                 </div>
               ) : (

@@ -3,7 +3,7 @@ import exploreHeroImg from '../../../explorer images/image 11 (1).webp';
 
 export default function ExploreCollegesSection() {
   // WhatsApp guidance number exclusively for WhatsApp interactions
-  const whatsappNumber = '916305692643';
+  const whatsappNumber = '917671980580';
 
   // Exactly four regional cards mapped directly to public/assets/images/regions/
   const cards = [
@@ -345,13 +345,13 @@ export default function ExploreCollegesSection() {
           </div>
 
           <div style={styles.contactRightCol} className="explore-contact-right-col">
-            {/* Call Us Item (Phone: +91 98765 43210) */}
+            {/* Call Us Item (Phone: +91 76719 80580) */}
             <div style={styles.contactItemRow}>
               <div style={styles.contactCircleIcon}>📞</div>
               <div style={styles.contactDetailGroup}>
                 <span style={styles.contactSmallLabel}>Call Us</span>
-                <a href="tel:+919876543210" style={styles.contactBigValue}>
-                  +91 98765 43210
+                <a href="tel:+917671980580" style={styles.contactBigValue}>
+                  +91 76719 80580
                 </a>
               </div>
             </div>

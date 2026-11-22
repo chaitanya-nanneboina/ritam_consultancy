@@ -28,10 +28,10 @@ export const CONTACT_PAGE_DATA = {
       title: "Direct Phone Helpline",
       label: "Call or WhatsApp",
       icon: "📞",
-      value: "+91 98765 43210",
+      value: "+91 76719 80580",
       subtext: "Monday to Saturday: 9:00 AM – 7:00 PM IST",
       actionText: "Call Now",
-      actionHref: "tel:+91 630 569 2643",
+      actionHref: "tel:+917671980580",
     },
     {
       id: "email",

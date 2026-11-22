@@ -255,29 +255,14 @@ export default function ResourcesSection() {
 
           <div className="resources-hero-illus-col reveal-on-scroll is-visible">
             <div className="resources-organic-frame">
-              {/* Organic curved mint backdrop with orange outline matching PDF reference */}
-              <svg
-                style={styles.organicBackdropSvg}
-                viewBox="0 0 520 400"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M 60 70 C 120 15, 410 25, 470 85 C 530 145, 510 310, 440 355 C 370 400, 110 395, 45 330 C -20 265, 0 125, 60 70 Z"
-                  fill="#D8EFE8"
-                  stroke="#F96815"
-                  strokeWidth="3.5"
-                />
-              </svg>
               <img
-                src="/assets/images/resources/resources-hero.webp"
+                src="/assets/images/resources/resources-student-bulb.png"
                 alt="Helpful Resources for Engineering Admissions"
                 className="resources-hero-img"
                 loading="eager"
                 fetchPriority="high"
                 width="480"
-                height="340"
+                height="380"
               />
             </div>
           </div>

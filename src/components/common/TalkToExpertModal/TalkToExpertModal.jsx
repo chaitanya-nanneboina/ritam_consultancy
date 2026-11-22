@@ -321,7 +321,26 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
           color: #111827 !important;
           background-color: #FFFFFF !important;
         }
+        .talk-expert-bottom-wave-wrap {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 58px;
+          pointer-events: none;
+          z-index: 1;
+          line-height: 0;
+          overflow: hidden;
+        }
+        .talk-expert-bottom-wave-svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
         @media (max-width: 768px) {
+          .talk-expert-bottom-wave-wrap {
+            height: 18px !important;
+          }
           .talk-expert-modal-backdrop {
             padding: 12px !important;
             align-items: center !important;
@@ -465,6 +484,22 @@ export default function TalkToExpertModal({ isOpen, onClose }) {
                 e.currentTarget.src = '/assets/images/expert/expert-counselor.webp';
               }}
             />
+          </div>
+
+          {/* Orange Curved Wave Shape at Bottom of Green Panel */}
+          <div className="talk-expert-bottom-wave-wrap" aria-hidden="true">
+            <svg
+              className="talk-expert-bottom-wave-svg"
+              viewBox="0 0 500 80"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 0 52 C 90 52, 140 64, 210 62 C 290 60, 360 22, 430 24 C 465 25, 488 27, 500 28 L 500 80 L 0 80 Z"
+                fill="#F96815"
+              />
+            </svg>
           </div>
         </div>
 

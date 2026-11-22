@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive asset bundles if any
+Disallow: /api/
+
+# Sitemap reference for Search Engines (Google, Bing)
+Sitemap: https://www.ritamconsultancy.com/sitemap.xml

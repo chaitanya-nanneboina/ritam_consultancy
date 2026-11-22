@@ -114,6 +114,10 @@ export function useScrollReveal() {
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const isMobile =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(max-width: 767px)').matches;
+
     // Split text into spans for GSAP
     prepareTextSplitting();
 
@@ -131,49 +135,55 @@ export function useScrollReveal() {
       return;
     }
 
-    // 1. Smooth Word-by-Word Animations (.anim-words) - Clean & Non-Bouncy
+    // 1. Smooth Word-by-Word Animations (.anim-words) - Clean, Silk-Smooth & Non-Bouncy
     const wordContainers = document.querySelectorAll('.anim-words');
     wordContainers.forEach((container) => {
       const words = container.querySelectorAll('.gsap-word');
       if (words.length === 0) return;
 
-      gsap.set(words, { y: 16, opacity: 0 });
+      gsap.set(words, { y: isMobile ? 20 : 16, opacity: 0 });
 
       const anim = gsap.to(words, {
         y: 0,
         opacity: 1,
-        duration: 0.6,
-        delay: 0.08,
-        ease: 'power2.out',
-        stagger: 0.04,
+        duration: isMobile ? 0.95 : 0.8,
+        delay: isMobile ? 0.12 : 0.08,
+        ease: 'power3.out',
+        stagger: isMobile ? 0.05 : 0.04,
         scrollTrigger: {
           trigger: container,
-          start: 'top 88%',
+          start: isMobile ? 'top 74%' : 'top 82%',
           once: true,
+          onComplete: () => {
+            gsap.set(words, { clearProps: 'transform,willChange' });
+          },
         },
       });
       if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
     });
 
-    // 2. Smooth Letter-by-Letter Animations (.anim-letters) - Clean & Non-Bouncy
+    // 2. Smooth Letter-by-Letter Animations (.anim-letters) - Clean, Silk-Smooth & Non-Bouncy
     const letterContainers = document.querySelectorAll('.anim-letters');
     letterContainers.forEach((container) => {
       const letters = container.querySelectorAll('.gsap-letter');
       if (letters.length === 0) return;
 
-      gsap.set(letters, { y: 10, opacity: 0 });
+      gsap.set(letters, { y: isMobile ? 12 : 10, opacity: 0 });
 
       const anim = gsap.to(letters, {
         y: 0,
         opacity: 1,
-        duration: 0.5,
-        delay: 0.12,
-        ease: 'power2.out',
-        stagger: 0.025,
+        duration: isMobile ? 0.8 : 0.65,
+        delay: isMobile ? 0.18 : 0.12,
+        ease: 'power3.out',
+        stagger: isMobile ? 0.03 : 0.025,
         scrollTrigger: {
           trigger: container,
-          start: 'top 88%',
+          start: isMobile ? 'top 74%' : 'top 82%',
           once: true,
+          onComplete: () => {
+            gsap.set(letters, { clearProps: 'transform,willChange' });
+          },
         },
       });
       if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
@@ -182,25 +192,24 @@ export function useScrollReveal() {
     // 3. Guidance Process 4-Step Cards: Trigger ONE card after another when scrolling
     const stepItems = document.querySelectorAll('.guidance-step-item');
     stepItems.forEach((stepEl) => {
-      gsap.set(stepEl, { opacity: 0, y: 30 });
+      gsap.set(stepEl, { opacity: 0, y: isMobile ? 26 : 28 });
 
       const anim = gsap.to(stepEl, {
         opacity: 1,
         y: 0,
-        duration: 0.65,
-        ease: 'power2.out',
+        duration: isMobile ? 0.9 : 0.75,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: stepEl,
-          start: 'top 84%',
+          start: isMobile ? 'top 75%' : 'top 82%',
           once: true,
+          onComplete: () => {
+            gsap.set(stepEl, { clearProps: 'transform,willChange' });
+          },
         },
       });
       if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
     });
-
-    const isMobile =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(max-width: 767px)').matches;
 
     // 4. Mobile-Only Horizontal Slide Reveal Animation for "Explore B.Tech Colleges Across India"
     if (isMobile) {
@@ -335,25 +344,28 @@ export function useScrollReveal() {
       const cards = container.querySelectorAll('.anim-card');
       if (cards.length === 0) return;
 
-      gsap.set(cards, { opacity: 0, y: 28 });
+      gsap.set(cards, { opacity: 0, y: isMobile ? 24 : 28 });
 
       const anim = gsap.to(cards, {
         opacity: 1,
         y: 0,
-        duration: 0.65,
-        delay: 0.08,
-        ease: 'power2.out',
-        stagger: 0.1,
+        duration: isMobile ? 0.85 : 0.7,
+        delay: isMobile ? 0.1 : 0.08,
+        ease: 'power3.out',
+        stagger: isMobile ? 0.08 : 0.09,
         scrollTrigger: {
           trigger: container,
-          start: 'top 85%',
+          start: isMobile ? 'top 75%' : 'top 82%',
           once: true,
+          onComplete: () => {
+            gsap.set(cards, { clearProps: 'transform,willChange' });
+          },
         },
       });
       if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
     });
 
-    // 6. General Synchronized Section Columns & Reveal Elements (.reveal-on-scroll)
+    // 7. General Synchronized Section Columns & Reveal Elements (.reveal-on-scroll)
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     revealElements.forEach((el) => {
       // Avoid duplicate triggers for cards and guidance steps
@@ -365,30 +377,44 @@ export function useScrollReveal() {
         return;
       }
 
-      gsap.set(el, { opacity: 0, y: 22 });
+      gsap.set(el, { opacity: 0, y: isMobile ? 18 : 22 });
 
       const anim = gsap.to(el, {
         opacity: 1,
         y: 0,
-        duration: 0.65,
-        ease: 'power2.out',
+        duration: isMobile ? 0.9 : 0.75,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 88%',
+          start: isMobile ? 'top 76%' : 'top 84%',
           once: true,
           onEnter: () => el.classList.add('is-visible'),
+          onComplete: () => {
+            el.classList.add('is-visible');
+            gsap.set(el, { clearProps: 'transform,willChange' });
+          },
         },
       });
       if (anim.scrollTrigger) triggers.push(anim.scrollTrigger);
     });
 
-    // Refresh ScrollTrigger after DOM adjustments
-    const refreshTimer = setTimeout(() => {
+    // Refresh ScrollTrigger after DOM adjustments across multiple layout passes
+    const refreshTimer1 = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 120);
 
+    const refreshTimer2 = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 450);
+
+    const refreshTimer3 = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 900);
+
     return () => {
-      clearTimeout(refreshTimer);
+      clearTimeout(refreshTimer1);
+      clearTimeout(refreshTimer2);
+      clearTimeout(refreshTimer3);
       triggers.forEach((st) => st.kill());
     };
   }, []);

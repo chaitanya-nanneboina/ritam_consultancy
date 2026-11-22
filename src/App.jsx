@@ -36,7 +36,7 @@ export default function App() {
   useEffect(() => {
     const path = location.pathname || '/';
     const cleanKey = path.replace(/^\//, '').toLowerCase().trim();
-    const validSections = ['home', 'explore-colleges', 'blogs', 'resources', 'about-us'];
+    const validSections = ['home', 'explore-colleges', 'blogs', 'resources', 'about-us', 'privacy-policy', 'terms-and-conditions'];
     const matched = validSections.find((s) => s === cleanKey);
     if (matched) {
       updateSectionMetadata(matched);

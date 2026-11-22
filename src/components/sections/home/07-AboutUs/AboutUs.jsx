@@ -54,8 +54,8 @@ export default function AboutUs() {
               <span style={styles.badgeLabel}>Call Us</span>
               <h3 style={styles.cardTitle}>Phone Number</h3>
               <p style={styles.desc}>Mon – Sat: 9:00 AM – 7:00 PM</p>
-              <a href="tel:+91 630 569 2643" style={styles.actionLink}>
-                +91 98765 43210
+              <a href="tel:+917671980580" style={styles.actionLink}>
+                +91 76719 80580
               </a>
               <span style={styles.subAvailability}>Available for calls &amp; WhatsApp</span>
             </div>

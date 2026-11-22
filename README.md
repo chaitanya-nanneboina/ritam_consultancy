@@ -188,7 +188,7 @@ Before this architectural overhaul, running `npm run dev` failed to load the Rea
 
 ## 🏢 Office Location & Contact
 - **Headquarters:** 137/B, Opp. to Sri Amogha Junior College, BK Guda, Balkampet, Hyderabad, Telangana – 500038
-- **Helpline:** +91 98115 43210 (Mon – Sat: 9:00 AM – 7:00 PM)
+- **Helpline:** +91 76719 80580 (Mon – Sat: 9:00 AM – 7:00 PM)
 - **Email:** `ritamconsultancy77@gmail.com` | `admissions@ritamconsultancy.com`
 - **Google Maps:** [https://maps.app.goo.gl/z2KDhjNfTMerpFaj9](https://maps.app.goo.gl/z2KDhjNfTMerpFaj9)
 

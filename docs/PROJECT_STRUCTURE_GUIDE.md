@@ -218,7 +218,7 @@ Ritam Consultancy/
 - **Elements:**
   1. **Brand Identity:** Logo + "Trusted guidance for B.Tech admissions across India."
   2. **Contact Info:**
-     - Phone: `+91 98115 43210`
+     - Phone: `+91 76719 80580`
      - Email: `support@ritamconsultancy.com`
      - Location: `Hyderabad, India`
   3. **Bottom Legal Bar:**

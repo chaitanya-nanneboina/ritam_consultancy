@@ -47,7 +47,7 @@ export const SECTION_METADATA = {
     keywords:
       'B.Tech admission resources, free engineering guides, download admission checklist, intermediate marks scholarships, btech branch comparison pdf, deemed vs private universities guide, Ritam Consultancy',
     canonical: `${BASE_URL}/resources`,
-    ogImage: `${BASE_URL}/assets/images/resources/resources-hero.webp`,
+    ogImage: `${BASE_URL}/assets/images/resources/resources-student-bulb.png`,
     ogType: 'website',
   },
   'about-us': {
@@ -59,6 +59,28 @@ export const SECTION_METADATA = {
       'about Ritam Consultancy, education consultancy Hyderabad, B.Tech admissions counselor, trusted admission guidance, engineering career guidance India, zero commission education consultancy',
     canonical: `${BASE_URL}/about-us`,
     ogImage: `${BASE_URL}/assets/images/about/about-hero-fresh.webp`,
+    ogType: 'website',
+  },
+  'privacy-policy': {
+    id: 'privacy-policy',
+    title: 'Privacy Policy | Ritam Consultancy — Official Website Policy',
+    description:
+      'Official Privacy Policy of Ritam Consultancy. Learn how we collect, use, store, and protect student and parent personal information under our zero-commission framework.',
+    keywords:
+      'privacy policy, data protection, student confidentiality, Ritam Consultancy privacy, zero commission policy',
+    canonical: `${BASE_URL}/privacy-policy`,
+    ogImage: `${BASE_URL}/assets/images/og-preview.png`,
+    ogType: 'website',
+  },
+  'terms-and-conditions': {
+    id: 'terms-and-conditions',
+    title: 'Terms & Conditions | Ritam Consultancy — User & Client Agreement',
+    description:
+      'Official Terms and Conditions of Ritam Consultancy governing website access, admission guidance services, student responsibilities, and legal understandings.',
+    keywords:
+      'terms and conditions, user agreement, consultancy terms, Ritam Consultancy, admission counseling guidelines',
+    canonical: `${BASE_URL}/terms-and-conditions`,
+    ogImage: `${BASE_URL}/assets/images/og-preview.png`,
     ogType: 'website',
   },
 };

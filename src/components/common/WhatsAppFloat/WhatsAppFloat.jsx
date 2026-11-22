@@ -3,7 +3,7 @@ import { WhatsAppIcon } from '../../../assets/icons/Icons';
 import { getWhatsAppUri } from '../../../utils/formatting';
 
 export default function WhatsAppFloat({
-  phone = '6305692643',
+  phone = '7671980580',
   message = 'Hi Ritam Consultancy, I would like guidance for B.Tech Admissions.',
 }) {
   const whatsappUrl = getWhatsAppUri(phone, message);
@@ -18,30 +18,52 @@ export default function WhatsAppFloat({
       style={styles.container}
     >
       <style>{`
+        @media (max-width: 768px) {
+          .whatsapp-float-btn {
+            bottom: 20px !important;
+            right: 20px !important;
+            width: 52px !important;
+            height: 52px !important;
+            padding: 0 !important;
+            border-radius: 50% !important;
+            background-color: #25D366 !important;
+            border: none !important;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0 !important;
+          }
+          .whatsapp-float-circle {
+            width: 52px !important;
+            height: 52px !important;
+            background-color: transparent !important;
+            animation: none !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+          .whatsapp-float-text-col {
+            display: none !important;
+          }
+        }
         @media (max-width: 480px) {
           .whatsapp-float-btn {
             bottom: 16px !important;
-            right: 14px !important;
-            padding: 6px 14px 6px 6px !important;
-            gap: 8px !important;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+            right: 16px !important;
+            width: 50px !important;
+            height: 50px !important;
           }
           .whatsapp-float-circle {
-            width: 40px !important;
-            height: 40px !important;
-          }
-          .whatsapp-float-title {
-            font-size: 11.5px !important;
-          }
-          .whatsapp-float-subtitle {
-            font-size: 10.5px !important;
+            width: 50px !important;
+            height: 50px !important;
           }
         }
       `}</style>
       <div style={styles.iconCircle} className="whatsapp-float-circle">
-        <WhatsAppIcon size={24} color="#FFFFFF" />
+        <WhatsAppIcon size={26} color="#FFFFFF" />
       </div>
-      <div style={styles.textCol}>
+      <div style={styles.textCol} className="whatsapp-float-text-col">
         <div style={styles.topRow}>
           <span style={styles.onlineDot} aria-hidden="true" />
           <span style={styles.title} className="whatsapp-float-title">Counselors Active</span>

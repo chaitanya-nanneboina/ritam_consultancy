@@ -3,7 +3,7 @@
  */
 
 /**
- * Formats a phone number for display (e.g. "+91 98115 43210")
+ * Formats a phone number for display (e.g. "+91 76719 80580")
  * @param {string} phone 
  * @returns {string}
  */
